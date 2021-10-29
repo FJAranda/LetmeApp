@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Let me App</string>
+    <string name="strUsername">Username</string>
+    <string name="strPassword">Password</string>
+    <string name="strLogin">Log in</string>
+    <string name="strSignup">Sign Up</string>
 </resources>

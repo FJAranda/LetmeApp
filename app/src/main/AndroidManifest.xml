@@ -10,8 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LetMeApp">
         <activity
+            android:name=".ui.SignUpActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.SplashActivity"
-            android:exported="true">
+            android:exported="false"
+            android:theme="@style/Theme.LetMeApp.NoActionBar" />
+        <activity
+            android:name=".ui.LoginActivity"
+            android:exported="true"
+            android:theme="@style/Theme.LetMeApp.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

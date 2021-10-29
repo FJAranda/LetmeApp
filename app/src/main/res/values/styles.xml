@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextInputLayout">
+        <item name="boxStrokeColor">@color/primary_light</item>
+        <item name="background">@android:color/transparent</item>
+        <item name="hintTextColor">@color/primary_dark</item>
+        <item name="boxBackgroundMode">none</item>
+    </style>
+    
+</resources>
