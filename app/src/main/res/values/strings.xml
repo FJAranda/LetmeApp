@@ -4,4 +4,8 @@
     <string name="strPassword">Password</string>
     <string name="strLogin">Log in</string>
     <string name="strSignup">Sign Up</string>
+    <string name="strUsuario">Username</string>
+    <string name="strName">Name and Surname</string>
+    <string name="strMail">E-mail</string>
+    <string name="strtelefono">Telephone</string>
 </resources>
