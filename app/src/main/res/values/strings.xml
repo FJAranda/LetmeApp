@@ -8,4 +8,14 @@
     <string name="strName">Name and Surname</string>
     <string name="strMail">E-mail</string>
     <string name="strtelefono">Telephone</string>
+    <string name="strAnadirObjeto">Añadir Objeto</string>
+    <string name="strAddObject">Add Object</string>
+    <string name="strObjectName">Object name</string>
+    <string name="strObjectDescription">Object Description</string>
+    <string name="strObjectDisponibility">Object Disponibility</string>
+    <string name="strSendRequest">Send Request</string>
+    <string name="strRequestLabel">Request data</string>
+    <string name="strLendTime">Lend time</string>
+    <string name="strLendMessage">Message</string>
+    <string name="strSend">Send</string>
 </resources>
