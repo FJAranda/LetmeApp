@@ -6,5 +6,14 @@
         <item name="hintTextColor">@color/primary_dark</item>
         <item name="boxBackgroundMode">none</item>
     </style>
+
+    <style name="ButtonCancel">
+        <item name="android:backgroundTint">@color/secondary_dark</item>
+    </style>
+
+    <style name="ButtonSignUp">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@color/primary_dark</item>
+    </style>
     
 </resources>

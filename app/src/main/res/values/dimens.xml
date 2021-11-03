@@ -3,4 +3,6 @@
     <dimen name="padding_constraint_standard">32dp</dimen>
     <dimen name="tv_title1_size">20sp</dimen>
     <dimen name="til_margin_standard">16dp</dimen>
+    <dimen name="fab_elevation">6dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

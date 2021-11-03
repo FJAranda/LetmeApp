@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/padding_constraint_standard"
-    tools:context=".ui.SignUpActivity">
+    tools:context=".ui.signup.SignUpActivity">
 
     <TextView
         android:id="@+id/tvRegistro"
@@ -16,19 +16,19 @@
         android:text="@string/strSignup"
         android:textColor="@color/primary_dark"
         android:textSize="@dimen/tv_title1_size"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/glEnd"
+        app:layout_constraintStart_toStartOf="@+id/glStart"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilUsuario"
         style="@style/TextInputLayout"
-        android:layout_marginTop="@dimen/til_margin_standard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/til_margin_standard"
+        app:layout_constraintEnd_toStartOf="@+id/glEnd"
+        app:layout_constraintStart_toStartOf="@+id/glStart"
         app:layout_constraintTop_toBottomOf="@+id/ivImagenRegistro">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -40,11 +40,11 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilNombreApellidos"
         style="@style/TextInputLayout"
-        android:layout_marginTop="@dimen/til_margin_standard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/til_margin_standard"
+        app:layout_constraintEnd_toStartOf="@+id/glEnd"
+        app:layout_constraintStart_toStartOf="@+id/glStart"
         app:layout_constraintTop_toBottomOf="@+id/tilUsuario">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -56,11 +56,11 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilCorreoElectronico"
         style="@style/TextInputLayout"
-        android:layout_marginTop="@dimen/til_margin_standard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/til_margin_standard"
+        app:layout_constraintEnd_toStartOf="@+id/glEnd"
+        app:layout_constraintStart_toStartOf="@+id/glStart"
         app:layout_constraintTop_toBottomOf="@+id/tilNombreApellidos">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -72,11 +72,11 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilTelefono"
         style="@style/TextInputLayout"
-        android:layout_marginTop="@dimen/til_margin_standard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/til_margin_standard"
+        app:layout_constraintEnd_toStartOf="@+id/glEnd"
+        app:layout_constraintStart_toStartOf="@+id/glStart"
         app:layout_constraintTop_toBottomOf="@+id/tilCorreoElectronico">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -91,8 +91,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/til_margin_standard"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/glEnd"
+        app:layout_constraintStart_toStartOf="@+id/glStart"
         app:layout_constraintTop_toBottomOf="@+id/tilTelefono">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -107,16 +107,31 @@
         android:layout_height="wrap_content"
         android:text="@string/strSignup"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/glEnd"
+        app:layout_constraintStart_toStartOf="@+id/glStart" />
 
     <ImageView
         android:id="@+id/ivImagenRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/tilUsuario"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/glEnd"
+        app:layout_constraintStart_toStartOf="@+id/glStart"
         app:layout_constraintTop_toBottomOf="@id/tvRegistro"
         app:srcCompat="@drawable/person" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

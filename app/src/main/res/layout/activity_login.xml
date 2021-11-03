@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/padding_constraint_standard"
-    tools:context=".ui.LoginActivity">
+    tools:context=".ui.login.LoginActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -30,7 +30,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="67dp"
-            android:hint="@string/strUsername" />
+            android:hint="@string/strUsername"
+            android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -45,7 +46,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/strPassword" />
+            android:hint="@string/strPassword"
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageButton
@@ -81,8 +83,7 @@
 
     <Button
         android:id="@+id/btnSignUp"
-        android:background="@android:color/transparent"
-        android:textColor="@color/primary_dark"
+        style="@style/ButtonSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/strSignup"
