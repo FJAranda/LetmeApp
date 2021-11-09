@@ -15,5 +15,9 @@
         <item name="android:background">@android:color/transparent</item>
         <item name="android:textColor">@color/primary_dark</item>
     </style>
+
+    <style name="ImageButtonLike">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
     
 </resources>
