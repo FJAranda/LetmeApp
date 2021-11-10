@@ -7,7 +7,6 @@ import androidx.annotation.Nullable;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -42,16 +41,6 @@ public class DashboardFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initRVDashboard();
-        setNavigationDrawer();
-    }
-
-    private void setNavigationDrawer() {
-        NavController navController = NavHostFragment.findNavController(this);
-        DrawerLayout drawerLayout = (DrawerLayout) DrawerLayout.inflate(getActivity(),R.layout.drawer_layout, null);
-        AppBarConfiguration appBarConfiguration =
-                new AppBarConfiguration.Builder(navController.getGraph())
-                        .setOpenableLayout(drawerLayout)
-                        .build();
     }
 
     private void initRVDashboard() {

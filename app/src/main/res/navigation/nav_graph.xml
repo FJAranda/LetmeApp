@@ -7,6 +7,16 @@
     <fragment
         android:id="@+id/dashboardFragment"
         android:name="com.example.letmeapp.ui.dashboard.DashboardFragment"
-        android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_dashboard"
+        >
+        <action
+            android:id="@+id/action_dashboardFragment_to_objectFragment"
+            app:destination="@id/objectFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/objectFragment"
+        android:name="com.example.letmeapp.ui.object.ObjectFragment"
+        android:label="Object"
+        tools:layout="@layout/fragment_object"/>
 </navigation>
