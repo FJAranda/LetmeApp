@@ -24,20 +24,21 @@
 
         <ImageButton
             android:id="@+id/ibDashboardLike"
+            style="@style/ImageButtonLike"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivObjetoDashboard"
+            android:minWidth="@dimen/ib_minimum_target_size"
+            android:minHeight="@dimen/ib_minimum_target_size"
             android:src="@drawable/heart_empty"
-            style="@style/ImageButtonLike"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivObjetoDashboard" />
 
         <TextView
             android:id="@+id/tvNombreDashboardItem"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:paddingLeft="15dp"
-            android:text="TextView"
+            android:text="@string/strObjectName"
             android:textAlignment="textStart"
             app:layout_constraintBottom_toBottomOf="@+id/ibDashboardLike"
             app:layout_constraintEnd_toStartOf="@+id/ibDashboardLike"

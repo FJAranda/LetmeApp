@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Let me App</string>
+    <string name="strUsername">Nombre de usuario</string>
+    <string name="strPassword">Contraseña</string>
+    <string name="strLogin">Iniciar sesión</string>
+    <string name="strSignup">Registrarse</string>
+    <string name="strUsuario">Usuario</string>
+    <string name="strName">Nombre y Apellidos</string>
+    <string name="strtelefono">Teléfono</string>
+    <string name="strAddObject">Añadir objeto</string>
+    <string name="strObjectName">Nombre del objeto</string>
+    <string name="strObjectDescription">Descripción del objeto</string>
+    <string name="strObjectDisponibility">Disponibilidad del objeto</string>
+    <string name="strSendRequest">Enviar petición</string>
+    <string name="strRequestLabel">Datos de la petición</string>
+    <string name="strLendTime">Duración del préstamo</string>
+    <string name="strLendMessage">Mensaje</string>
+    <string name="strSend">Enviar</string>
+    <string name="strEdit">Editar</string>
+    <string name="nav_header_desc">Descripción</string>
+    <string name="nav_header_title">Título</string>
+    <string name="nav_header_subtitle">Subtítulo</string>
+    <string name="strAbout">Acerca de</string>
+</resources>

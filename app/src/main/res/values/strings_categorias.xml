@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categories_array">
+        <item>Cars</item>
+        <item>Motorbikes</item>
+        <item>Accesories</item>
+        <item>Clothes</item>
+        <item>Real-estate</item>
+        <item>Image</item>
+        <item>Sound</item>
+        <item>Telephones</item>
+    </string-array>
+</resources>

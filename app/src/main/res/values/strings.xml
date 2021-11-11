@@ -4,11 +4,10 @@
     <string name="strPassword">Password</string>
     <string name="strLogin">Log in</string>
     <string name="strSignup">Sign Up</string>
-    <string name="strUsuario">Username</string>
+    <string name="strUsuario">User</string>
     <string name="strName">Name and Surname</string>
-    <string name="strMail">E-mail</string>
+    <string name="strMail" translatable="false">E-mail</string>
     <string name="strtelefono">Telephone</string>
-    <string name="strAnadirObjeto">Añadir Objeto</string>
     <string name="strAddObject">Add Object</string>
     <string name="strObjectName">Object name</string>
     <string name="strObjectDescription">Object Description</string>
@@ -20,8 +19,9 @@
     <string name="strSend">Send</string>
     <string name="strEdit">Edit</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="nav_header_desc">Description</string>
     <string name="nav_header_title">Title</string>
     <string name="nav_header_subtitle">Subtitle</string>
+    <string name="strAbout">About</string>
 </resources>

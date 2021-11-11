@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import com.example.letmeapp.R;
 import com.example.letmeapp.databinding.FragmentDashboardBinding;
@@ -41,6 +42,12 @@ public class DashboardFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initRVDashboard();
+        populateSpinner();
+    }
+
+    private void populateSpinner() {
+        ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(getContext(), R.array.categories_array, android.R.layout.simple_spinner_dropdown_item);
+        binding.spCategorias.setAdapter(arrayAdapter);
     }
 
     private void initRVDashboard() {
