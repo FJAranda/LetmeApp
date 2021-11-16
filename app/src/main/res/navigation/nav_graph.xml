@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_objectFragment"
             app:destination="@id/objectFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_userFragment"
+            app:destination="@id/userFragment" />
     </fragment>
     <fragment
         android:id="@+id/objectFragment"
@@ -22,6 +25,11 @@
     <fragment
         android:id="@+id/nav_about"
         android:name="com.example.letmeapp.ui.about.AboutFragment"
-        android:label="fragment_about"
+        android:label="@string/strAbout"
         tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.example.letmeapp.ui.user.UserFragment"
+        android:label="@string/strUser"
+        tools:layout="@layout/fragment_user" />
 </navigation>
