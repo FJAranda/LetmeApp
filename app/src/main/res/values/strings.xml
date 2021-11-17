@@ -25,4 +25,7 @@
     <string name="nav_header_subtitle">Subtitle</string>
     <string name="strAbout">About</string>
     <string name="strUser">User</string>
+    <string name="strDeveloperName" translatable="false">Francisco Javier Aranda Caro</string>
+    <string name="strDeveloperJob">Developer</string>
+    <string name="strDeveloperInfo">Interested on technologies, car, motorbikes and sports.</string>
 </resources>

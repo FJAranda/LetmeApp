@@ -23,4 +23,6 @@
     <string name="nav_header_subtitle">Subtítulo</string>
     <string name="strAbout">Acerca de</string>
     <string name="strUser">Usuario</string>
+    <string name="strDeveloperJob">Programador</string>
+    <string name="strDeveloperInfo">Mis intereses son: la tecnología, los coches, las motos y los deportes.</string>
 </resources>

@@ -35,6 +35,11 @@ public class DashboardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentDashboardBinding.inflate(inflater);
+
+        binding.fab.setOnClickListener( v  ->{
+            NavHostFragment.findNavController(this).navigate(R.id.action_dashboardFragment_to_objectFragment);
+        });
+
         return binding.getRoot();
     }
 

@@ -1,7 +1,9 @@
 package com.example.letmeapp.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -12,6 +14,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.example.letmeapp.R;
 import com.example.letmeapp.databinding.ActivityMainBinding;
@@ -35,15 +38,12 @@ public class MainActivity extends AppCompatActivity {
 
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 
-        binding.appBarMain.fab.setOnClickListener( v  ->{
-            navController.navigate(R.id.action_dashboardFragment_to_objectFragment);
-        });
-
         DrawerLayout drawerLayout = binding.drawerLayout;
         NavigationView  navigationView = binding.navView;
 
         navigationView.getHeaderView(0).findViewById(R.id.ivUserNavDrawer).setOnClickListener(v ->{
             navController.navigate(R.id.action_dashboardFragment_to_userFragment);
+            drawerLayout.closeDrawer(GravityCompat.START);
         });
 
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).setOpenableLayout(drawerLayout).build();
@@ -58,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    public FloatingActionButton getFab(){
-        return binding.appBarMain.fab;
-    }
+    //TODO: ELIMINAR - FAB en la activity
+    //public FloatingActionButton getFab(){
+      //  return binding.appBarMain.fab;
+    //}
 }
