@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         DrawerLayout drawerLayout = binding.drawerLayout;
         NavigationView  navigationView = binding.navView;
+        navigationView.setItemIconTintList(null);
 
         navigationView.getHeaderView(0).findViewById(R.id.ivUserNavDrawer).setOnClickListener(v ->{
             navController.navigate(R.id.action_dashboardFragment_to_userFragment);

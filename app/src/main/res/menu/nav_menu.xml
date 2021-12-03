@@ -3,7 +3,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/menu_user"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_requests"
+            android:icon="@drawable/ic_petition"
+            android:title="@string/strRequest" />
+        <item
+            android:id="@+id/nav_loans"
+            android:icon="@drawable/ic_loan"
+            android:title="@string/str_loans" />
+        <item
+            android:id="@+id/nav_borrowed"
+            android:icon="@drawable/ic_borrowed"
+            android:title="@string/strBorrowed" />
+        <item
+            android:id="@+id/nav_favorites"
+            android:icon="@drawable/heart_filled"
+            android:title="@string/strFavorites" />
+
+    </group>
+    <group
+        android:id="@+id/menu_app"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_preferences"
+            android:icon="@android:drawable/ic_menu_preferences"
+            android:title="@string/strPreferences" />
         <item
             android:id="@+id/nav_about"
             android:icon="@android:drawable/ic_dialog_info"

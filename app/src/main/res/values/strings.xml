@@ -28,4 +28,13 @@
     <string name="strDeveloperName" translatable="false">Francisco Javier Aranda Caro</string>
     <string name="strDeveloperJob">Developer</string>
     <string name="strDeveloperInfo">Interested on technologies, car, motorbikes and sports.</string>
+    <string name="strRequest">Requests</string>
+    <string name="str_loans">Loans</string>
+    <string name="strBorrowed">Borrowed</string>
+    <string name="strFavorites">Favorites</string>
+    <string name="strPreferences">Preferences</string>
+    <string name="strEndDate">End Date:</string>
+    <string name="strExampleDate">12-12-1212</string>
+    <string name="strEmptyString">This field can\'t be empty.</string>
+    <string name="strNewRequest">New Request</string>
 </resources>

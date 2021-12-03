@@ -19,8 +19,9 @@ import android.widget.ArrayAdapter;
 
 import com.example.letmeapp.R;
 import com.example.letmeapp.databinding.FragmentDashboardBinding;
+import com.example.letmeapp.model.Item;
 
-public class DashboardFragment extends Fragment {
+public class DashboardFragment extends Fragment implements DashboardAdapter.OnManageItemListener {
 
     FragmentDashboardBinding binding;
     private DashboardAdapter adapter;
@@ -56,9 +57,15 @@ public class DashboardFragment extends Fragment {
     }
 
     private void initRVDashboard() {
-        adapter = new DashboardAdapter();
+        adapter = new DashboardAdapter(this);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2, RecyclerView.VERTICAL, false);
         binding.rvDashboard.setLayoutManager(gridLayoutManager);
         binding.rvDashboard.setAdapter(adapter);
+    }
+
+    @Override
+    public void onViewItem(Item item) {
+        //TODO: Controlar si es para añadir o visualizar un objeto y pasar el objeto
+        NavHostFragment.findNavController(this).navigate(R.id.action_dashboardFragment_to_objectFragment);
     }
 }

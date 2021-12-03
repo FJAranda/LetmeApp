@@ -25,11 +25,23 @@
     <fragment
         android:id="@+id/nav_about"
         android:name="com.example.letmeapp.ui.about.AboutFragment"
-        android:label="@string/strAbout"
-        tools:layout="@layout/fragment_about" />
+        android:label="@string/strAbout" />
     <fragment
         android:id="@+id/userFragment"
         android:name="com.example.letmeapp.ui.user.UserFragment"
         android:label="@string/strUser"
         tools:layout="@layout/fragment_user" />
+    <fragment
+        android:id="@+id/nav_requests"
+        android:name="com.example.letmeapp.ui.request.RequestListFragment"
+        android:label="@string/strRequest" >
+        <action
+            android:id="@+id/action_nav_requests_to_requestFragment"
+            app:destination="@id/requestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestFragment"
+        android:name="com.example.letmeapp.ui.request.RequestFragment"
+        android:label="@string/strNewRequest"
+        tools:layout="@layout/fragment_request" />
 </navigation>

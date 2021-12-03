@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/padding_constraint_standard"
+    tools:context=".ui.object.ObjectFragment"
     >
 
     <TextView
@@ -39,6 +40,7 @@
         app:layout_constraintTop_toBottomOf="@id/ivObjeto">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietNombreObjeto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/strObjectName" />
@@ -56,6 +58,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tilDisponibilidadObjeto">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietDescripcionObjeto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/strObjectDescription"
@@ -73,6 +76,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tilNombreObjeto">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietDisponibilidadObjeto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/strObjectDisponibility" />
