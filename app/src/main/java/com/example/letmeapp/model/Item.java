@@ -1,6 +1,9 @@
 package com.example.letmeapp.model;
 
-public class Item {
+import java.io.Serializable;
+import java.util.Objects;
+
+public class Item implements Comparable, Serializable {
     //private int itemCode;
     private String nombre;
     private String srcImagen;
@@ -54,5 +57,19 @@ public class Item {
         this.descripcion = descripcion;
         this.tipo = tipo;
         this.estado = estado;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return ((Item)o).getNombre().equals(getNombre());
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        if (((Item)o).getNombre().equals(getNombre())){
+            return ((Item)o).getDescripcion().compareTo(getDescripcion());
+        }else{
+            return ((Item)o).getNombre().compareTo(getNombre());
+        }
     }
 }

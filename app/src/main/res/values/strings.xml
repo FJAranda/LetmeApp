@@ -37,4 +37,5 @@
     <string name="strExampleDate">12-12-1212</string>
     <string name="strEmptyString">This field can\'t be empty.</string>
     <string name="strNewRequest">New Request</string>
+    <string name="strOrderByTipo">Order by type</string>
 </resources>

@@ -4,15 +4,15 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -20,6 +20,8 @@ import android.widget.ArrayAdapter;
 import com.example.letmeapp.R;
 import com.example.letmeapp.databinding.FragmentDashboardBinding;
 import com.example.letmeapp.model.Item;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 
 public class DashboardFragment extends Fragment implements DashboardAdapter.OnManageItemListener {
 
@@ -29,7 +31,25 @@ public class DashboardFragment extends Fragment implements DashboardAdapter.OnMa
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //TODO: MENU
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.dashboard_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_order_tipo:
+                Snackbar.make(getView(), "Items ordenados por tipo", BaseTransientBottomBar.LENGTH_SHORT).show();
+                adapter.orderByTipo();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -65,6 +85,8 @@ public class DashboardFragment extends Fragment implements DashboardAdapter.OnMa
 
     @Override
     public void onViewItem(Item item) {
+        //Tarea 7-1
+        Snackbar.make(getView(), item.getNombre(), BaseTransientBottomBar.LENGTH_SHORT).show();
         //TODO: Controlar si es para añadir o visualizar un objeto y pasar el objeto
         NavHostFragment.findNavController(this).navigate(R.id.action_dashboardFragment_to_objectFragment);
     }

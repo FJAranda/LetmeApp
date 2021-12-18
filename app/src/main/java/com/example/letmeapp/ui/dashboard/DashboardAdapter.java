@@ -12,8 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.letmeapp.R;
 import com.example.letmeapp.model.Item;
+import com.example.letmeapp.model.ItemComparator;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.ViewHolder> {
@@ -24,9 +26,9 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
     public DashboardAdapter(OnManageItemListener listener) {
         this.list = new ArrayList<Item>();
         list.add(new Item("Item1", "rutaimagenitem1", "Descripcion Item 1", "Tipo1", "Estado1"));
-        list.add(new Item("Item2", "rutaimagenitem2", "Descripcion Item 2", "Tipo2", "Estado2"));
-        list.add(new Item("Item3", "rutaimagenitem3", "Descripcion Item 3", "Tipo3", "Estado3"));
-        list.add(new Item("Item4", "rutaimagenitem4", "Descripcion Item 4", "Tipo4", "Estado4"));
+        list.add(new Item("Item2", "rutaimagenitem2", "Descripcion Item 2", "Tipo3", "Estado2"));
+        list.add(new Item("Item3", "rutaimagenitem3", "Descripcion Item 3", "Tipo2", "Estado3"));
+        list.add(new Item("Item4", "rutaimagenitem4", "Descripcion Item 4", "Tipo2", "Estado4"));
         list.add(new Item("Item5", "rutaimagenitem5", "Descripcion Item 5", "Tipo5", "Estado5"));
         this.listener = listener;
     }
@@ -34,6 +36,11 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
     public void update(List<Item> list){
         this.list.clear();
         this.list.addAll(list);
+        notifyDataSetChanged();
+    }
+
+    public void orderByTipo() {
+        Collections.sort(list, new ItemComparator());
         notifyDataSetChanged();
     }
 
