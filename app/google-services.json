@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "451920547383",
+    "project_id": "letmeapp-8198c",
+    "storage_bucket": "letmeapp-8198c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451920547383:android:9671f8ad8705db5a2579b2",
+        "android_client_info": {
+          "package_name": "com.example.letmeapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "451920547383-g2ru5a8n9fe7lngdtb4sgq4nn6ts6mvj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.letmeapp",
+            "certificate_hash": "f5d664fa12fb76ab468323dab240b299ab4db401"
+          }
+        },
+        {
+          "client_id": "451920547383-54cgbn52rq8a54l4tnmsvech9lv0p1hl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbVYwfbuXvlzZUTfGIbuEEUFDtzsT6nc0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "451920547383-54cgbn52rq8a54l4tnmsvech9lv0p1hl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

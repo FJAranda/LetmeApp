@@ -1,8 +1,9 @@
 package com.example.letmeapp.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Request {
+public class Request implements Comparable, Serializable {
     private String item;
     private String applicant;
     private String message;
@@ -65,5 +66,19 @@ public class Request {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return ((Request)o).getStartDate().equals(getStartDate());
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        if (((Request)o).getStartDate().equals(getStartDate())){
+            return((Request)o).getEndDate().compareTo(getEndDate());
+        }else{
+            return ((Request)o).getStartDate().compareTo(getStartDate());
+        }
     }
 }

@@ -38,4 +38,6 @@
     <string name="strEmptyString">This field can\'t be empty.</string>
     <string name="strNewRequest">New Request</string>
     <string name="strOrderByTipo">Order by type</string>
+    <string name="facebook_app_id">1889855451403586</string>
+    <string name="fb_login_protocol_scheme">fb1889855451403586</string>
 </resources>
