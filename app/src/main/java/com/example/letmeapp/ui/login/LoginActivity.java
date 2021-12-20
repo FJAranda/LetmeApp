@@ -8,11 +8,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.util.Patterns;
+import android.view.View;
 
 import com.example.letmeapp.R;
 import com.example.letmeapp.databinding.ActivityLoginBinding;
 import com.example.letmeapp.ui.MainActivity;
+import com.example.letmeapp.ui.base.IProgressView;
 import com.example.letmeapp.ui.signup.SignUpActivity;
 
 import com.facebook.CallbackManager;
@@ -30,10 +36,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Arrays;
 
-public class LoginActivity extends AppCompatActivity implements LoginContract.View{
+public class LoginActivity extends AppCompatActivity{
     private ActivityLoginBinding binding;
     private CallbackManager callbackManager;
-    private LoginContract.Presenter presenter;
 
     public enum ProviderType{
         EMAIL,
@@ -48,32 +53,29 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        //textwatchers
+        binding.tiledtUserLogin.addTextChangedListener(new LoginTextWatcher(binding.tiledtUserLogin));
+        binding.tiledtPasswordLogin.addTextChangedListener(new LoginTextWatcher(binding.tiledtPasswordLogin));
+
         //Facebook Login
         callbackManager = CallbackManager.Factory.create();
 
-        //User logged check
-        checkLoggedIn();
-
         //Buttons
-        binding.btnSignIn.setOnClickListener(v -> {
-            //TODO: LOGIN FIREBASE
-        });
-
         binding.btnSignUp.setOnClickListener(v -> {
             showSignUp();
         });
 
+        binding.btnSignIn.setOnClickListener(v -> {
+            //TODO: LOGIN FIREBASE
+        });
+
         binding.ibSignInFacebook.setOnClickListener( v-> {
-            facebookLogin();
+
         });
 
         binding.ibSignInGoole.setOnClickListener(v->{
-            gmailLogin();
-        });
-    }
 
-    private void checkLoggedIn() {
-        //TODO: COMPROBAR USUARIO EN SHAREDPREFERENCES Y SI EXISTE IR A SHOWHOME
+        });
     }
 
     private void showSignUp() {
@@ -82,26 +84,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         finish();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        Log.d("ONATIVITYRESULT", "");
-        callbackManager.onActivityResult(requestCode, resultCode, data);
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    public void facebookLogin() {
-
-    }
-
-    public void gmailLogin() {
-
-    }
-
-    public void login() {
-
-    }
-
-    //Contract methods
     public void showHome() {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
@@ -111,4 +93,44 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     public void showSnackbarError(String error) {
         Snackbar.make(binding.getRoot(), error, Snackbar.LENGTH_SHORT).show();
     }
+
+    //region textWatcher
+    class LoginTextWatcher implements TextWatcher{
+        private View view;
+
+        LoginTextWatcher(View view){
+            this.view = view;
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            switch (view.getId()){
+                case R.id.tiledtUserLogin:
+                    if (TextUtils.isEmpty(s.toString())){
+                        binding.tilUserLogin.setError(getString(R.string.userEmptyError));
+                    }else{
+                        binding.tilUserLogin.setError(null);
+                    }
+                    break;
+                case R.id.tiledtPasswordLogin:
+                    if (TextUtils.isEmpty(s.toString())){
+                        binding.tilPasswordLogin.setError(getString(R.string.passwordEmptyError));
+                    }else {
+                        binding.tilPasswordLogin.setError(null);
+                    }
+                    break;
+            }
+        }
+    }
+    //endregion
 }

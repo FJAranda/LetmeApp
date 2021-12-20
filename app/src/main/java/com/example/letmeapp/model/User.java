@@ -3,6 +3,12 @@ package com.example.letmeapp.model;
 import java.io.Serializable;
 
 public class User implements Serializable {
+    public static final String UID_TAG = "USER_UID";
+    public static final String USERNAME_TAG = "USER_USERNAME";
+    public static final String NAME_TAG = "USER_NAME";
+    public static final String EMAIL_TAG = "USER_EMAIL";
+    public static final String IMAGE_TAG = "USER_IMAGE";
+
     String UID;
     String username;
     String name;
@@ -12,6 +18,14 @@ public class User implements Serializable {
 
     public User(String UID, String username, String name, String email, String password, String image) {
         this.UID = UID;
+        this.username = username;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.image = image;
+    }
+
+    public User(String username, String name, String email, String password, String image) {
         this.username = username;
         this.name = name;
         this.email = email;

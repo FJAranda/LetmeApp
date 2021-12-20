@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             drawerLayout.closeDrawer(GravityCompat.START);
         });
 
-        navigationView.getMenu().getItem(R.id.item_logout).setOnMenuItemClickListener( v -> {
+        navigationView.getMenu().findItem(R.id.item_logout).setOnMenuItemClickListener( v -> {
             if (provider == LoginActivity.ProviderType.FACEBOOK){
                 LoginManager.getInstance().logOut();
             }

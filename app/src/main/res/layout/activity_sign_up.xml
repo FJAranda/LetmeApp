@@ -32,6 +32,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ivImagenRegistro">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiledtUserSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/strUsuario" />
@@ -48,6 +49,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tilUsuario">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiledtNombreSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/strName" />
@@ -64,6 +66,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tilNombreApellidos">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiledtMailSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/strMail" />
@@ -80,6 +83,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tilCorreoElectronico">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiledtTelefonoSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/strtelefono" />
@@ -96,9 +100,27 @@
         app:layout_constraintTop_toBottomOf="@+id/tilTelefono">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiledtPasswordSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/strPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilConfirmPassword"
+        style="@style/TextInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/til_margin_standard"
+        app:layout_constraintEnd_toStartOf="@+id/glEnd"
+        app:layout_constraintStart_toStartOf="@+id/glStart"
+        app:layout_constraintTop_toBottomOf="@+id/tilPassword">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiledtConfirmPasswordSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/strConfirmPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -133,5 +155,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.95" />
+
+    <ProgressBar
+        android:id="@+id/pbSignUp"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
