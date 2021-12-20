@@ -22,12 +22,11 @@ public interface SignUpContract {
     }
 
     interface Presenter{
+        //TODO: ONDESTROY
         void validate(User user, String password);
     }
 
-    interface Interactor{
-        void onSuccess(User user);
-        void onFailure(String message);
+    interface Interactor extends SignUpCallback{
         void onUserEmptyError();
         void onUserShortError();
         void onEmailEmptyError();
@@ -35,9 +34,5 @@ public interface SignUpContract {
         void onPasswordEmptyError();
         void onPasswordError();
         void onConfirmPasswordError();
-    }
-
-    interface Repository{
-        void signUp(User user);
     }
 }

@@ -37,6 +37,10 @@ public class SignUpInteractor implements SignUpContract.SignUpCallback {
             presenter.onConfirmPasswordError();
             return;
         }
+        if (user.getUsername().length() < 8){
+            presenter.onUserShortError();
+            return;
+        }
         if (!Patterns.EMAIL_ADDRESS.matcher(user.getEmail()).matches()){
             presenter.onEmailError();
             return;

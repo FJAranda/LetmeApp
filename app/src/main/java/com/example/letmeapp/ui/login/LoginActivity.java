@@ -7,7 +7,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -17,6 +19,7 @@ import android.view.View;
 
 import com.example.letmeapp.R;
 import com.example.letmeapp.databinding.ActivityLoginBinding;
+import com.example.letmeapp.model.User;
 import com.example.letmeapp.ui.MainActivity;
 import com.example.letmeapp.ui.base.IProgressView;
 import com.example.letmeapp.ui.signup.SignUpActivity;
@@ -36,9 +39,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Arrays;
 
-public class LoginActivity extends AppCompatActivity{
+public class LoginActivity extends AppCompatActivity implements LoginContract.View{
     private ActivityLoginBinding binding;
-    private CallbackManager callbackManager;
+    LoginContract.Presenter presenter;
 
     public enum ProviderType{
         EMAIL,
@@ -52,13 +55,11 @@ public class LoginActivity extends AppCompatActivity{
 
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        presenter = new LoginPresenter(this);
 
         //textwatchers
         binding.tiledtUserLogin.addTextChangedListener(new LoginTextWatcher(binding.tiledtUserLogin));
         binding.tiledtPasswordLogin.addTextChangedListener(new LoginTextWatcher(binding.tiledtPasswordLogin));
-
-        //Facebook Login
-        callbackManager = CallbackManager.Factory.create();
 
         //Buttons
         binding.btnSignUp.setOnClickListener(v -> {
@@ -67,14 +68,16 @@ public class LoginActivity extends AppCompatActivity{
 
         binding.btnSignIn.setOnClickListener(v -> {
             //TODO: LOGIN FIREBASE
+            presenter.login(binding.tiledtUserLogin.getText().toString(), binding.tiledtPasswordLogin.getText().toString());
+
         });
 
         binding.ibSignInFacebook.setOnClickListener( v-> {
-
+            //TODO: LOGIN FACEBOOK
         });
 
         binding.ibSignInGoole.setOnClickListener(v->{
-
+            //TODO: LOGIN GOOGLE
         });
     }
 
@@ -90,8 +93,43 @@ public class LoginActivity extends AppCompatActivity{
         finish();
     }
 
-    public void showSnackbarError(String error) {
-        Snackbar.make(binding.getRoot(), error, Snackbar.LENGTH_SHORT).show();
+    @Override
+    public void showProgress() {
+        binding.pbLogin.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgress() {
+        binding.pbLogin.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onSuccess(String email) {
+        //TODO: SAVE EMAIL TO SHARED PREFERENCES AND GO TO MAINACTIVITY
+        SharedPreferences.Editor sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this).edit();
+        sharedPreferences.putString(User.EMAIL_TAG, email);
+        sharedPreferences.apply();
+        showHome();
+    }
+
+    @Override
+    public void onFailure(String message) {
+        Snackbar.make(binding.getRoot(), message, Snackbar.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onFacebookFailure() {
+        Snackbar.make(binding.getRoot(), "Facebook login error", Snackbar.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void setUserEmptyError() {
+        binding.tilUserLogin.setError(getString(R.string.strEmptyString));
+    }
+
+    @Override
+    public void setPasswordEmptyError() {
+        binding.tilPasswordLogin.setError(getString(R.string.strEmptyString));
     }
 
     //region textWatcher
