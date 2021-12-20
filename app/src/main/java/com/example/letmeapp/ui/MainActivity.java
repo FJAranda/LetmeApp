@@ -19,6 +19,8 @@ import android.view.View;
 import com.example.letmeapp.R;
 import com.example.letmeapp.databinding.ActivityMainBinding;
 import com.example.letmeapp.ui.dashboard.DashboardFragment;
+import com.example.letmeapp.ui.login.LoginActivity;
+import com.facebook.login.LoginManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
     private NavController navController;
+    private LoginActivity.ProviderType provider;
     private final String TAG = "MainActivity";
 
     @Override
@@ -45,6 +48,13 @@ public class MainActivity extends AppCompatActivity {
         navigationView.getHeaderView(0).findViewById(R.id.ivUserNavDrawer).setOnClickListener(v ->{
             navController.navigate(R.id.action_dashboardFragment_to_userFragment);
             drawerLayout.closeDrawer(GravityCompat.START);
+        });
+
+        navigationView.getMenu().getItem(R.id.item_logout).setOnMenuItemClickListener( v -> {
+            if (provider == LoginActivity.ProviderType.FACEBOOK){
+                LoginManager.getInstance().logOut();
+            }
+            return true;
         });
 
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).setOpenableLayout(drawerLayout).build();

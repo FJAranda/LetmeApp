@@ -40,4 +40,6 @@
     <string name="strOrderByTipo">Order by type</string>
     <string name="facebook_app_id">1889855451403586</string>
     <string name="fb_login_protocol_scheme">fb1889855451403586</string>
+    <string name="str_firebase_facebook_error">Firebase error using facebook login</string>
+    <string name="strLogout">Logout</string>
 </resources>
