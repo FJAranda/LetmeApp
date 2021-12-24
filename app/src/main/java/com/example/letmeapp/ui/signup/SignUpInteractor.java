@@ -13,7 +13,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class SignUpInteractor implements SignUpContract.SignUpCallback {
+public class SignUpInteractor {
     SignUpContract.Interactor presenter;
 
     public SignUpInteractor(SignUpContract.Interactor presenter) {
@@ -64,21 +64,11 @@ public class SignUpInteractor implements SignUpContract.SignUpCallback {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            onSuccess(user);
+                           presenter.onSuccess(user);
                         } else {
-                            onFailure(task.getException().toString());
+                            presenter.onFailure(task.getException().toString());
                         }
                     }
                 });
-    }
-
-    @Override
-    public void onSuccess(User user) {
-        presenter.onSuccess(user);
-    }
-
-    @Override
-    public void onFailure(String message) {
-        presenter.onFailure(message);
     }
 }

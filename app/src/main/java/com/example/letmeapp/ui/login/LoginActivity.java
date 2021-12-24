@@ -2,6 +2,7 @@ package com.example.letmeapp.ui.login;
 
 import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,11 +25,17 @@ import com.example.letmeapp.ui.MainActivity;
 import com.example.letmeapp.ui.base.IProgressView;
 import com.example.letmeapp.ui.signup.SignUpActivity;
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
@@ -36,6 +43,7 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 import java.util.Arrays;
 
@@ -43,11 +51,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     private ActivityLoginBinding binding;
     LoginContract.Presenter presenter;
 
-    public enum ProviderType{
-        EMAIL,
-        FACEBOOK,
-        GMAIL
-    }
+    private final int GOOGLE_SIGN_IN = 111111;
+    private CallbackManager callbackManager = CallbackManager.Factory.create();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,18 +72,52 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         });
 
         binding.btnSignIn.setOnClickListener(v -> {
-            //TODO: LOGIN FIREBASE
             presenter.login(binding.tiledtUserLogin.getText().toString(), binding.tiledtPasswordLogin.getText().toString());
 
         });
 
         binding.ibSignInFacebook.setOnClickListener( v-> {
-            //TODO: LOGIN FACEBOOK
+            LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("email"));
+            LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+                @Override
+                public void onSuccess(LoginResult loginResult) {
+                    if (loginResult != null){
+                        AccessToken accessToken = loginResult.getAccessToken();
+                        presenter.facebookLogin(accessToken);
+                    }
+                }
+                @Override
+                public void onCancel() {
+
+                }
+
+                @Override
+                public void onError(@NonNull FacebookException e) {
+
+                }
+            });
         });
 
         binding.ibSignInGoole.setOnClickListener(v->{
-            //TODO: LOGIN GOOGLE
+            //LOGIN GOOGLE
+            GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestIdToken(getString(R.string.requestIdTokenWeb))
+                    .requestEmail()
+                    .build();
+            GoogleSignInClient client = GoogleSignIn.getClient(this, googleSignInOptions);
+            //TODO: MEJORAR USANDO REGISTERFORACTIVITYRESULT
+            startActivityForResult(client.getSignInIntent(), GOOGLE_SIGN_IN);
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == GOOGLE_SIGN_IN){
+            //TODO: CONTROLAR BOTON ATRÁS ANTES DE HACER LOGIN
+            presenter.gmailLogin(data);
+        }
     }
 
     private void showSignUp() {
@@ -104,8 +143,13 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.onDestroy();
+    }
+
+    @Override
     public void onSuccess(String email) {
-        //TODO: SAVE EMAIL TO SHARED PREFERENCES AND GO TO MAINACTIVITY
         SharedPreferences.Editor sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this).edit();
         sharedPreferences.putString(User.EMAIL_TAG, email);
         sharedPreferences.apply();
@@ -115,11 +159,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     public void onFailure(String message) {
         Snackbar.make(binding.getRoot(), message, Snackbar.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onFacebookFailure() {
-        Snackbar.make(binding.getRoot(), "Facebook login error", Snackbar.LENGTH_SHORT).show();
     }
 
     @Override

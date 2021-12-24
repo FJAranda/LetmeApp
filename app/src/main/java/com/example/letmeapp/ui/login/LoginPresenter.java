@@ -1,5 +1,9 @@
 package com.example.letmeapp.ui.login;
 
+import android.content.Intent;
+
+import com.facebook.AccessToken;
+
 public class LoginPresenter implements LoginContract.Presenter, LoginContract.Interactor{
     LoginContract.View view;
     LoginInteractor interactor;
@@ -22,11 +26,6 @@ public class LoginPresenter implements LoginContract.Presenter, LoginContract.In
     }
 
     @Override
-    public void onFacebookFailure() {
-
-    }
-
-    @Override
     public void onDestroy() {
         this.view = null;
         this.interactor = null;
@@ -34,17 +33,20 @@ public class LoginPresenter implements LoginContract.Presenter, LoginContract.In
 
     @Override
     public void login(String email, String password) {
-
+        view.showProgress();
+        interactor.login(email, password);
     }
 
     @Override
-    public void facebookLogin() {
-
+    public void facebookLogin(AccessToken accessToken) {
+        view.showProgress();
+        interactor.facebookLogin(accessToken);
     }
 
     @Override
-    public void gmailLogin() {
-
+    public void gmailLogin(Intent data) {
+        view.showProgress();
+        interactor.gmailLogin(data);
     }
 
     @Override

@@ -34,12 +34,12 @@
     <string name="strFavorites">Favorites</string>
     <string name="strPreferences">Preferences</string>
     <string name="strEndDate">End Date:</string>
-    <string name="strExampleDate">12-12-1212</string>
+    <string name="strExampleDate" translatable="false">12-12-1212</string>
     <string name="strEmptyString">This field can\'t be empty.</string>
     <string name="strNewRequest">New Request</string>
     <string name="strOrderByTipo">Order by type</string>
-    <string name="facebook_app_id">1889855451403586</string>
-    <string name="fb_login_protocol_scheme">fb1889855451403586</string>
+    <string name="facebook_app_id" translatable="false">1889855451403586</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb1889855451403586</string>
     <string name="str_firebase_facebook_error">Firebase error using facebook login</string>
     <string name="strLogout">Logout</string>
     <string name="userEmptyError">User can not be empty.</string>
@@ -49,4 +49,6 @@
     <string name="emailFormatError">E-mail format is incorrect.</string>
     <string name="strPasswordTooEasy">"Password must contains at least 8 characters, 1 Capital, 1 Number, 1 Lower and 1 Symbol. "</string>
     <string name="strPasswordsNotMatch">Passwords doesn\'t match.</string>
+    <string name="requestIdTokenAndroid" translatable="false">451920547383-g2ru5a8n9fe7lngdtb4sgq4nn6ts6mvj.apps.googleusercontent.com</string>
+    <string name="requestIdTokenWeb" translatable="false">451920547383-54cgbn52rq8a54l4tnmsvech9lv0p1hl.apps.googleusercontent.com</string>
 </resources>
