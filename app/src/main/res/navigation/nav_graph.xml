@@ -16,12 +16,20 @@
         <action
             android:id="@+id/action_dashboardFragment_to_userFragment"
             app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_baseDialog"
+            app:destination="@id/baseDialog" />
     </fragment>
     <fragment
         android:id="@+id/objectFragment"
         android:name="com.example.letmeapp.ui.object.ObjectFragment"
         android:label="Object"
-        tools:layout="@layout/fragment_object"/>
+        tools:layout="@layout/fragment_object">
+        <argument
+            android:name="item"
+            app:argType="com.example.letmeapp.model.Item"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/nav_about"
         android:name="com.example.letmeapp.ui.about.AboutFragment"
@@ -34,7 +42,7 @@
     <fragment
         android:id="@+id/nav_requests"
         android:name="com.example.letmeapp.ui.request.RequestListFragment"
-        android:label="@string/strRequest" >
+        android:label="@string/strRequest">
         <action
             android:id="@+id/action_nav_requests_to_requestFragment"
             app:destination="@id/requestFragment" />
@@ -44,4 +52,22 @@
         android:name="com.example.letmeapp.ui.request.RequestFragment"
         android:label="@string/strNewRequest"
         tools:layout="@layout/fragment_request" />
+    <fragment
+        android:id="@+id/nav_friends"
+        android:name="com.example.letmeapp.ui.user.FriendListFragment"
+        android:label="@string/strFriendList"
+        tools:layout="@layout/fragment_friend_list" >
+        <action
+            android:id="@+id/action_nav_friends_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.letmeapp.ui.user.ProfileFragment"
+        android:label="@string/strProfile"
+        tools:layout="@layout/fragment_profile" />
+    <dialog
+        android:id="@+id/baseDialog"
+        android:name="com.example.letmeapp.ui.base.BaseDialog"
+        android:label="BaseDialog" />
 </navigation>

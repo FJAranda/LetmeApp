@@ -22,6 +22,10 @@
             android:id="@+id/nav_favorites"
             android:icon="@drawable/heart_filled"
             android:title="@string/strFavorites" />
+        <item
+            android:id="@+id/nav_friends"
+            android:icon="@drawable/ic_friends"
+            android:title="@string/strFriends" />
 
     </group>
     <group

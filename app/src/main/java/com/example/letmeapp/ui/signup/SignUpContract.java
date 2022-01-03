@@ -22,7 +22,7 @@ public interface SignUpContract {
     }
 
     interface Presenter{
-        //TODO: ONDESTROY
+        void onDestroy();
         void validate(User user, String password);
     }
 

@@ -18,7 +18,6 @@
     <string name="strLendMessage">Message</string>
     <string name="strSend">Send</string>
     <string name="strEdit">Edit</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="nav_header_desc">Description</string>
     <string name="nav_header_title">Title</string>
@@ -51,4 +50,12 @@
     <string name="strPasswordsNotMatch">Passwords doesn\'t match.</string>
     <string name="requestIdTokenAndroid" translatable="false">451920547383-g2ru5a8n9fe7lngdtb4sgq4nn6ts6mvj.apps.googleusercontent.com</string>
     <string name="requestIdTokenWeb" translatable="false">451920547383-54cgbn52rq8a54l4tnmsvech9lv0p1hl.apps.googleusercontent.com</string>
+    <string name="strFriends">Friends</string>
+    <string name="strFriendList">Friends List</string>
+    <string name="strProfile">Profile</string>
+    <string name="strDeleteItem">Delete Item</string>
+    <string name="strWasDeleted">was deleted.</string>
+    <string name="strEditItem">Edit item</string>
+    <string name="strWasAdded">was added.</string>
+    <string name="strEdited">edited</string>
 </resources>

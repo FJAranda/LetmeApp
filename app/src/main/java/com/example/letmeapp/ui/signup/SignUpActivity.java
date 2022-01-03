@@ -53,6 +53,12 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         finish();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.onDestroy();
+    }
+
     //region Contract methods
     @Override
     public void showProgress() {

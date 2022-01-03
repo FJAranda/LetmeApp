@@ -12,6 +12,12 @@ public class SignUpPresenter implements SignUpContract.Presenter, SignUpContract
     }
 
     @Override
+    public void onDestroy() {
+        this.view = null;
+        this.interactor = null;
+    }
+
+    @Override
     public void validate(User user, String password) {
         view.showProgress();
         interactor.validate(user, password);

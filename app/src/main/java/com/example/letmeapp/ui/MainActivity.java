@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.example.letmeapp.R;
 import com.example.letmeapp.databinding.ActivityMainBinding;
@@ -35,12 +36,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
     private NavController navController;
     private final String TAG = "MainActivity";
+    private FirebaseFirestore firestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,53 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(binding.appBarMain.toolbar);
 
+        setDrawerLayout();
+
+        //TODO: GET USER DATA FROM DATABASE USING EMAIL SAVED IN PREFERENCES
+        //GET USER DATA FROM SHAREDPREFENRENCES -> IF NOT EXIST -> GETUSERDATAFROMFIRESTORE -> IF NOT EXIST -> GO TO USERFRAGMENT TO SAVE USERDATA
+        //                                      -> IF EXIST -> SET IN NAVIGATION DRAWER
+        //Comprobar si los datos del usuario estan en sharedPreferences
+        User user = getUserData();
+        if (user.isCompleted()){
+            //Setear los datos del usuario
+            setUserData(user);
+            //Si no, comprobar si estan en firestore
+        }else{
+            //Si no estan en firestore, ir a userfragment para que se introduzcan los datos faltantes
+        }
+
+        Log.d("SPM", PreferenceManager.getDefaultSharedPreferences(this).getString(User.EMAIL_TAG, null));
+    }
+
+    private User getUserData(){
+        User user = new User(
+                PreferenceManager.getDefaultSharedPreferences(this).getString(User.USERNAME_TAG, ""),
+                PreferenceManager.getDefaultSharedPreferences(this).getString(User.NAME_TAG, ""),
+                PreferenceManager.getDefaultSharedPreferences(this).getString(User.EMAIL_TAG, ""),
+                PreferenceManager.getDefaultSharedPreferences(this).getString(User.IMAGE_TAG, "")
+        );
+        return user;
+    }
+
+    private void setUserData(User user) {
+        ImageView  ivUserImage = binding.navView.getHeaderView(0).findViewById(R.id.ivUserNavDrawer);
+        /*Picasso.get()
+                .load(user.getImage())
+                .placeholder(R.drawable.letmeapp)
+                .error(R.drawable.letmeapp)
+                .into(ivUserImage);*/
+        /*firestore.collection(User.USER_COLLECTION)
+                .document(PreferenceManager.getDefaultSharedPreferences(this).getString(User.EMAIL_TAG, null))
+                .get()
+                .addOnSuccessListener( v -> {
+
+                })
+                .addOnFailureListener(v -> {
+
+                });*/
+    }
+
+    private void setDrawerLayout() {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 
         DrawerLayout drawerLayout = binding.drawerLayout;
@@ -79,9 +130,6 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).setOpenableLayout(drawerLayout).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
-        //TODO: GET USER DATA FROM DATABASE USING EMAIL SAVED IN PREFERENCES
-        Log.d("SPM", PreferenceManager.getDefaultSharedPreferences(this).getString(User.EMAIL_TAG, null));
     }
 
     @Override

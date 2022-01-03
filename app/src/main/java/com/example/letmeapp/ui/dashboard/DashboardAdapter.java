@@ -23,13 +23,14 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
     public ArrayList<Item> list;
     private OnManageItemListener listener;
 
-    public DashboardAdapter(OnManageItemListener listener) {
-        this.list = new ArrayList<Item>();
+    public DashboardAdapter(ArrayList<Item> list, OnManageItemListener listener) {
+        /*this.list = new ArrayList<Item>();
         list.add(new Item("Item1", "rutaimagenitem1", "Descripcion Item 1", "Tipo1", "Estado1"));
         list.add(new Item("Item2", "rutaimagenitem2", "Descripcion Item 2", "Tipo3", "Estado2"));
         list.add(new Item("Item3", "rutaimagenitem3", "Descripcion Item 3", "Tipo2", "Estado3"));
         list.add(new Item("Item4", "rutaimagenitem4", "Descripcion Item 4", "Tipo2", "Estado4"));
-        list.add(new Item("Item5", "rutaimagenitem5", "Descripcion Item 5", "Tipo5", "Estado5"));
+        list.add(new Item("Item5", "rutaimagenitem5", "Descripcion Item 5", "Tipo5", "Estado5"));*/
+        this.list = list;
         this.listener = listener;
     }
 
@@ -44,8 +45,24 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
         notifyDataSetChanged();
     }
 
+    public void order(){
+        Collections.sort(list);
+        notifyDataSetChanged();
+    }
+
+    public void inverseOrder(){
+        Collections.reverse(list);
+        notifyDataSetChanged();
+    }
+
+    public void delete(Item item) {
+        this.list.remove(item);
+        notifyDataSetChanged();
+    }
+
     public interface OnManageItemListener{
         void onViewItem(Item item);
+        void onDeleteItem(Item item);
     }
 
     @NonNull
@@ -82,6 +99,11 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
         public void bind(Item item, OnManageItemListener listener){
             itemView.setOnClickListener(v->{
                 listener.onViewItem(item);
+            });
+
+            itemView.setOnLongClickListener( v->{
+                listener.onDeleteItem(item);
+                return true;
             });
         }
     }

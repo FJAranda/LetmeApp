@@ -37,7 +37,7 @@ public class SignUpInteractor {
             presenter.onConfirmPasswordError();
             return;
         }
-        if (user.getUsername().length() < 8){
+        if (user.getUsername().length() < 4){
             presenter.onUserShortError();
             return;
         }
@@ -66,7 +66,7 @@ public class SignUpInteractor {
                         if (task.isSuccessful()) {
                            presenter.onSuccess(user);
                         } else {
-                            presenter.onFailure(task.getException().toString());
+                            presenter.onFailure(task.getException().getCause().toString());
                         }
                     }
                 });

@@ -8,6 +8,7 @@ public class User implements Serializable {
     public static final String NAME_TAG = "USER_NAME";
     public static final String EMAIL_TAG = "USER_EMAIL";
     public static final String IMAGE_TAG = "USER_IMAGE";
+    public static final String USER_COLLECTION = "users";
 
     String UID;
     String username;
@@ -33,7 +34,21 @@ public class User implements Serializable {
         this.image = image;
     }
 
+    public User(String username, String name, String email, String image){
+        this.username = username;
+        this.name = name;
+        this.email = email;
+        this.image = image;
+    }
+
     public User() {
+    }
+
+    public boolean isCompleted(){
+        if (this.username.isEmpty() || this.name.isEmpty() || this.email.isEmpty()){
+            return false;
+        }
+        return true;
     }
 
     public String getUID() {
