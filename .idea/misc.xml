@@ -37,8 +37,11 @@
         <entry key="app/src/main/res/layout/item_dashboard.xml" value="0.18385416666666668" />
         <entry key="app/src/main/res/layout/item_request.xml" value="0.25" />
         <entry key="app/src/main/res/layout/nav_header.xml" value="0.1765625" />
-        <entry key="app/src/main/res/menu/dashboard_menu.xml" value="0.18697916666666667" />
+        <entry key="app/src/main/res/menu/dashboard_menu.xml" value="0.1" />
         <entry key="app/src/main/res/menu/nav_menu.xml" value="0.33" />
+        <entry key="app/src/main/res/menu/request_menu.xml" value="0.15364583333333334" />
+        <entry key="app/src/main/res/xml/preferences.xml" value="0.286231884057971" />
+        <entry key="app/src/main/res/xml/root_preferences.xml" value="0.286231884057971" />
       </map>
     </option>
   </component>

@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import com.example.letmeapp.R;
 import com.example.letmeapp.databinding.FragmentObjectBinding;
 import com.example.letmeapp.model.Item;
+import com.example.letmeapp.ui.dashboard.DashboardFragmentDirections;
 import com.google.android.material.snackbar.Snackbar;
 
 public class ObjectFragment extends Fragment implements ObjectContract.View{
@@ -44,17 +45,33 @@ public class ObjectFragment extends Fragment implements ObjectContract.View{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //TODO: If object do not belong to me, view mode with request option
+        //Simulated with item 1
         //Edit mode
         if (ObjectFragmentArgs.fromBundle(getArguments()).getItem() != null){
-            getActivity().setTitle(getString(R.string.strEditItem));
-            setButtonEditMode();
             oldItem = ObjectFragmentArgs.fromBundle(getArguments()).getItem();
+            //Simulated with item 1
+            if (oldItem.getNombre() == "Item1"){
+                getActivity().setTitle(getString(R.string.strViewItem));
+                binding.tvObject.setText(oldItem.getNombre());
+                setButtonRequestMode();
+                setView(oldItem);
+            }
+            getActivity().setTitle(getString(R.string.strEditItem));
+            binding.tvObject.setText(R.string.strEditItem);
+            setButtonEditMode();
             setView(oldItem);
         }//Add Mode
         else{
             getActivity().setTitle(getString(R.string.strAddObject));
             setButtonAddMode();
         }
+    }
+
+    private void setButtonRequestMode() {
+        ObjectFragmentDirections.ActionObjectFragmentToRequestFragment action =
+                ObjectFragmentDirections.actionObjectFragmentToRequestFragment(oldItem, null);
+        NavHostFragment.findNavController(this).navigate(action);
     }
 
     private void setButtonAddMode() {

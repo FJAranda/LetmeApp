@@ -1,0 +1,31 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android = "http://schemas.android.com/apk/res/android">
+    <PreferenceCategory app:title="@string/account_header">
+        <SwitchPreference
+            android:defaultValue="true"
+            app:key="@string/account_key"
+            app:summary="@string/account_summary"
+            app:title="@string/account_title"></SwitchPreference>
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/design_header">
+        <SwitchPreference
+            android:defaultValue="false"
+            app:key="@string/night_mode_key"
+            app:summary="@string/night_mode_summary"
+            app:title="@string/night_mode"></SwitchPreference>
+        <SwitchPreference
+            android:defaultValue="false"
+            app:key="@string/automatic_mode_key"
+            app:summary="@string/automatic_mode_summary"
+            app:title="@string/automatic_mode"></SwitchPreference>
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/help_header">
+    <Preference app:title="@string/help_point">
+        <intent android:action="android.intent.action.VIEW"
+            android:data="https://faq.whatsapp.com"></intent>
+    </Preference>
+    <Preference app:title="@string/privacy_conditions"></Preference>
+</PreferenceCategory>
+</PreferenceScreen>

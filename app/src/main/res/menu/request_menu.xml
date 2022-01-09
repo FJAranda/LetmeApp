@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <item
-        android:id="@+id/action_order_tipo"
-        android:title="@string/strOrderByTipo"
-        app:showAsAction="always"
-        android:icon="@drawable/ic_type"
+        android:id="@+id/action_order_applicant"
+        android:icon="@drawable/person"
         android:orderInCategory="1"
-        />
+        android:title="@string/strOrderByApplicant"
+        app:showAsAction="always" />
     <item
         android:id="@+id/action_order_name"
         android:title="@string/str_name_order" />

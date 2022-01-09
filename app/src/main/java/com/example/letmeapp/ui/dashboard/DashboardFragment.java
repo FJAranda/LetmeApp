@@ -50,11 +50,14 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        //TODO: ORDENAR POR NOMBRE
         switch (item.getItemId()){
             case R.id.action_order_tipo:
                 Snackbar.make(getView(), "Items ordenados por tipo", BaseTransientBottomBar.LENGTH_SHORT).show();
                 adapter.orderByTipo();
+                return true;
+            case R.id.action_order_name:
+                Snackbar.make(getView(), "Items ordenados por nombre", BaseTransientBottomBar.LENGTH_SHORT).show();
+                presenter.order();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

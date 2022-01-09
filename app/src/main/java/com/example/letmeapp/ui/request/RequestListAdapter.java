@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.letmeapp.R;
 import com.example.letmeapp.model.Request;
+import com.example.letmeapp.model.RequestComparator;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -23,19 +25,40 @@ public class RequestListAdapter extends RecyclerView.Adapter<RequestListAdapter.
 
     interface OnManageRequestListener{
         void onViewRequest(Request request);
+        void onDeleteRequest(Request request);
     }
 
     public RequestListAdapter(OnManageRequestListener listener) {
         list = new ArrayList<>();
-        list.add(new Request("Item 1", "Jose123","Emprestamelo", new Date(), new Date(), "Pending"));
+        /*list.add(new Request("Item 1", "Jose123","Emprestamelo", new Date(), new Date(), "Pending"));
         list.add(new Request("Item 2", "Juan12","Emprestamelo a mi mejon", new Date(), new Date(), "Rejected"));
-        list.add(new Request("Item 3", "Javivi","Illo, emprestamelo", new Date(), new Date(), "Accepted"));
+        list.add(new Request("Item 3", "Javivi","Illo, emprestamelo", new Date(), new Date(), "Accepted"));*/
         this.listener = listener;
     }
 
     public void update(List<Request> list){
         this.list.clear();
         this.list.addAll(list);
+        notifyDataSetChanged();
+    }
+
+    public void order(){
+        Collections.sort(list);
+        notifyDataSetChanged();
+    }
+
+    public void inverseOrder(){
+        Collections.reverse(list);
+        notifyDataSetChanged();
+    }
+
+    public void orderByApplicant(){
+        Collections.sort(list, new RequestComparator());
+        notifyDataSetChanged();
+    }
+
+    public void delete(Request request){
+        this.list.remove(request);
         notifyDataSetChanged();
     }
 
@@ -74,6 +97,10 @@ public class RequestListAdapter extends RecyclerView.Adapter<RequestListAdapter.
         public void bind(Request request, OnManageRequestListener listener){
             itemView.setOnClickListener(v->{
                 listener.onViewRequest(request);
+            });
+            itemView.setOnLongClickListener(v ->{
+                listener.onDeleteRequest(request);
+                return true;
             });
         }
     }

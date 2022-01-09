@@ -58,4 +58,36 @@
     <string name="strEditItem">Edit item</string>
     <string name="strWasAdded">was added.</string>
     <string name="strEdited">edited</string>
+    <string name="strViewItem">View Item</string>
+    <string name="strRequestSended">Request sended to the owner.</string>
+    <string name="str_name_order">Order by name</string>
+    <string name="strOrderByApplicant">Order by applicant</string>
+    <string name="account_header">Account</string>
+    <string name="account_title">Save user account</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="account_key" translatable="false">account_key</string>
+    <string name="account_summary">Save user account at the first app login.</string>
+    <string name="design_header">Design</string>
+    <string name="night_mode_key" translatable="false">night_mode_key</string>
+    <string name="night_mode_summary">Always app on night mode</string>
+    <string name="night_mode">Night mode</string>
+    <string name="automatic_mode_key" translatable="false">automatic_mode_key</string>
+    <string name="automatic_mode_summary">App design changes with device style.</string>
+    <string name="automatic_mode">Night-Day mode auto</string>
+    <string name="help_header">Help</string>
+    <string name="privacy_conditions">Privacy Conditions</string>
+    <string name="help_point">Help Website</string>
 </resources>
