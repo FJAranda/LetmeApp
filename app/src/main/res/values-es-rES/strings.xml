@@ -19,8 +19,8 @@
     <string name="strSend">Enviar</string>
     <string name="strEdit">Editar</string>
     <string name="nav_header_desc">Descripción</string>
-    <string name="nav_header_title">Título</string>
-    <string name="nav_header_subtitle">Subtítulo</string>
+    <string name="nav_header_title">Perfil incompleto</string>
+    <string name="nav_header_subtitle">Toca la imagen para completarlo</string>
     <string name="strAbout">Acerca de</string>
     <string name="strUser">Usuario</string>
     <string name="strDeveloperJob">Programador</string>

@@ -8,7 +8,17 @@ public class User implements Serializable {
     public static final String NAME_TAG = "USER_NAME";
     public static final String EMAIL_TAG = "USER_EMAIL";
     public static final String IMAGE_TAG = "USER_IMAGE";
-    public static final String USER_COLLECTION = "users";
+    public static final String USER_COMPLETED_PREFERENCE = "USER_COMPLETED";
+
+    //FIRESTORE COLLECTION NAMES
+    public static final String USERS_FIRESTORE = "users";
+    public static final String FAVORITES_FIRESTORE = "favorites";
+    public static final String FRIENDSHIP_FIRESTORE = "friendship";
+    public static final String NAME_FIRESTORE = "name";
+    public static final String INTERESTS_FIRESTORE = "interests";
+    public static final String IMAGE_FIRESTORE = "image";
+    public static final String USERNAME_FIRESTORE = "username";
+
 
     String UID;
     String username;
@@ -45,10 +55,13 @@ public class User implements Serializable {
     }
 
     public boolean isCompleted(){
-        if (this.username.isEmpty() || this.name.isEmpty() || this.email.isEmpty()){
-            return false;
+        if (this.username != null && this.name != null && this.email != null){
+            if (this.username.isEmpty() || this.name.isEmpty() || this.email.isEmpty()) {
+                return false;
+            }
+            return true;
         }
-        return true;
+        return false;
     }
 
     public String getUID() {

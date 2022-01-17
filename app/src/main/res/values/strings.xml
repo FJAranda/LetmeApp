@@ -20,8 +20,8 @@
     <string name="strEdit">Edit</string>
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="nav_header_desc">Description</string>
-    <string name="nav_header_title">Title</string>
-    <string name="nav_header_subtitle">Subtitle</string>
+    <string name="nav_header_title">Incomplete profile</string>
+    <string name="nav_header_subtitle">Click the image to complete</string>
     <string name="strAbout">About</string>
     <string name="strUser">User</string>
     <string name="strDeveloperName" translatable="false">Francisco Javier Aranda Caro</string>
@@ -90,4 +90,9 @@
     <string name="help_header">Help</string>
     <string name="privacy_conditions">Privacy Conditions</string>
     <string name="help_point">Help Website</string>
+    <string name="strCompleteUser">Complete user data to lend items and make requests.</string>
+    <string name="strLoginError">User not register on database.</string>
+    <string name="strRecoverPass">Change password</string>
+    <string name="strPasswordMailRecoverSent">Mail sended to recover password.</string>
+    <string name="strUserEdited">User edited successfully</string>
 </resources>

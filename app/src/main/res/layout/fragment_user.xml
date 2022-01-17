@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -10,18 +15,22 @@
 
     <ImageView
         android:id="@+id/ivUserimage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/person"/>
+        android:scaleType="fitCenter"
+        android:src="@drawable/person"
+        />
 
     <TextView
         android:id="@+id/tvUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_gravity="center_horizontal"
         android:text="@string/strUsername"
+        android:textStyle="bold"
+        android:textColor="@color/black"
         android:textAlignment="center" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -50,36 +59,22 @@
             android:hint="@string/strMail" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilTelefono"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvRecoverPassword"
+        style="@style/ButtonSignUp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/TextInputLayout"
-        android:layout_marginTop="32dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/strtelefono" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/TextInputLayout"
-        android:layout_marginTop="32dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/strPassword" />
-    </com.google.android.material.textfield.TextInputLayout>
+        android:text="@string/strRecoverPass"
+        android:layout_gravity="right"
+        android:layout_marginTop="32dp"
+        android:clickable="true"/>
 
     <Button
         android:id="@+id/btnEditUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/strEdit" />
+        android:text="@string/strEdit"
+        android:layout_marginTop="32dp"/>
 </LinearLayout>
+</ScrollView>

@@ -19,12 +19,14 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.letmeapp.R;
 import com.example.letmeapp.databinding.ActivityMainBinding;
 import com.example.letmeapp.model.User;
 import com.example.letmeapp.ui.dashboard.DashboardFragment;
 import com.example.letmeapp.ui.login.LoginActivity;
+import com.example.letmeapp.utils.MyUtils;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -35,6 +37,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
@@ -44,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private NavController navController;
     private final String TAG = "MainActivity";
-    private FirebaseFirestore firestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,48 +59,42 @@ public class MainActivity extends AppCompatActivity {
 
         setDrawerLayout();
 
-        //TODO: GET USER DATA FROM DATABASE USING EMAIL SAVED IN PREFERENCES
-        //GET USER DATA FROM SHAREDPREFENRENCES -> IF NOT EXIST -> GETUSERDATAFROMFIRESTORE -> IF NOT EXIST -> GO TO USERFRAGMENT TO SAVE USERDATA
-        //                                      -> IF EXIST -> SET IN NAVIGATION DRAWER
-        //Comprobar si los datos del usuario estan en sharedPreferences
-        User user = getUserData();
+        getUserSharedPreferences();
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        //TODO: SOLUCIONA ERROR CON LOGOUT Y LOGIN CONSECUTIVOS DE FACEBOOK Y FIREBASE
+        //finish();
+    }
+
+    private void getUserSharedPreferences() {
+        User user = MyUtils.getUserData(this);
         if (user.isCompleted()){
-            //Setear los datos del usuario
             setUserData(user);
-            //Si no, comprobar si estan en firestore
         }else{
-            //Si no estan en firestore, ir a userfragment para que se introduzcan los datos faltantes
+            Snackbar.make(binding.getRoot(), getString(R.string.strCompleteUser), BaseTransientBottomBar.LENGTH_LONG).show();
         }
-
-        Log.d("SPM", PreferenceManager.getDefaultSharedPreferences(this).getString(User.EMAIL_TAG, null));
     }
 
-    private User getUserData(){
-        User user = new User(
-                PreferenceManager.getDefaultSharedPreferences(this).getString(User.USERNAME_TAG, ""),
-                PreferenceManager.getDefaultSharedPreferences(this).getString(User.NAME_TAG, ""),
-                PreferenceManager.getDefaultSharedPreferences(this).getString(User.EMAIL_TAG, ""),
-                PreferenceManager.getDefaultSharedPreferences(this).getString(User.IMAGE_TAG, "")
-        );
-        return user;
-    }
 
     private void setUserData(User user) {
         ImageView  ivUserImage = binding.navView.getHeaderView(0).findViewById(R.id.ivUserNavDrawer);
-        /*Picasso.get()
-                .load(user.getImage())
-                .placeholder(R.drawable.letmeapp)
-                .error(R.drawable.letmeapp)
-                .into(ivUserImage);*/
-        /*firestore.collection(User.USER_COLLECTION)
-                .document(PreferenceManager.getDefaultSharedPreferences(this).getString(User.EMAIL_TAG, null))
-                .get()
-                .addOnSuccessListener( v -> {
-
-                })
-                .addOnFailureListener(v -> {
-
-                });*/
+        try {
+            Picasso.get()
+                    .load(user.getImage())
+                    .placeholder(R.drawable.letmeapp)
+                    .error(R.drawable.letmeapp)
+                    .into(ivUserImage);
+        }catch (Exception e){
+            //Si algo falla picasso pone la imagen de error.
+        }
+        TextView tvTitle = binding.navView.getHeaderView(0).findViewById(R.id.tvTitleNavDrawer);
+        tvTitle.setText(user.getName());
+        TextView tvSubtitle = binding.navView.getHeaderView(0).findViewById(R.id.tvSubtitleNavDrawer);
+        tvSubtitle.setText(user.getUsername());
     }
 
     private void setDrawerLayout() {
@@ -113,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         navigationView.getMenu().findItem(R.id.item_logout).setOnMenuItemClickListener( v -> {
-            LoginManager.getInstance().logOut();
             FirebaseAuth.getInstance().signOut();
             GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                     .requestIdToken(getString(R.string.requestIdTokenWeb))
@@ -123,7 +119,8 @@ public class MainActivity extends AppCompatActivity {
             googleSignInClient.signOut();
             LoginManager.getInstance().logOut();
             PreferenceManager.getDefaultSharedPreferences(this).edit().clear().apply();
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
             return true;
         });
 

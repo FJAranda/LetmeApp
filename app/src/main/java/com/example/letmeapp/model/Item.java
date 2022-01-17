@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Item implements Comparable, Serializable {
+    //FIRESTORE COLLECTION NAMES
+    public static final String ITEMS_FIRESTORE = "items";
+
+
     //private int itemCode;
     private String nombre;
     private String srcImagen;

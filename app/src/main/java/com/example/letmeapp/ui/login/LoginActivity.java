@@ -108,6 +108,12 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             //TODO: MEJORAR USANDO REGISTERFORACTIVITYRESULT
             startActivityForResult(client.getSignInIntent(), GOOGLE_SIGN_IN);
         });
+
+        //Comprobar si hay datos del usuario en sharedpreferences y en firestore
+        String email = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString(User.EMAIL_TAG, null);
+        if (email != null) {
+            presenter.getUserData(email);
+        }
     }
 
     @Override
@@ -115,7 +121,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == GOOGLE_SIGN_IN){
-            //TODO: CONTROLAR BOTON ATRÁS ANTES DE HACER LOGIN
             presenter.gmailLogin(data);
         }
     }
@@ -153,12 +158,32 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         SharedPreferences.Editor sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this).edit();
         sharedPreferences.putString(User.EMAIL_TAG, email);
         sharedPreferences.apply();
-        showHome();
+        presenter.getUserData(email);
     }
 
     @Override
     public void onFailure(String message) {
         Snackbar.make(binding.getRoot(), message, Snackbar.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onUserDataSuccess(User user) {
+        SharedPreferences.Editor sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this).edit();
+        sharedPreferences.putString(User.USERNAME_TAG, user.getUsername());
+        sharedPreferences.putString(User.NAME_TAG, user.getName());
+        sharedPreferences.putString(User.EMAIL_TAG, user.getEmail());
+        sharedPreferences.putString(User.IMAGE_TAG, user.getImage());
+        sharedPreferences.putBoolean(User.USER_COMPLETED_PREFERENCE, true);
+        sharedPreferences.apply();
+        showHome();
+    }
+
+    @Override
+    public void onUserDataEmpty() {
+        SharedPreferences.Editor sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this).edit();
+        sharedPreferences.putBoolean(User.USER_COMPLETED_PREFERENCE, false);
+        sharedPreferences.apply();
+        showHome();
     }
 
     @Override

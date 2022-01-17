@@ -2,6 +2,7 @@ package com.example.letmeapp.ui.login;
 
 import android.content.Intent;
 
+import com.example.letmeapp.model.User;
 import com.facebook.AccessToken;
 
 public class LoginPresenter implements LoginContract.Presenter, LoginContract.Interactor{
@@ -26,6 +27,18 @@ public class LoginPresenter implements LoginContract.Presenter, LoginContract.In
     }
 
     @Override
+    public void onUserDataSuccess(User user) {
+        view.hideProgress();
+        view.onUserDataSuccess(user);
+    }
+
+    @Override
+    public void onUserDataEmpty() {
+        view.hideProgress();
+        view.onUserDataEmpty();
+    }
+
+    @Override
     public void onDestroy() {
         this.view = null;
         this.interactor = null;
@@ -47,6 +60,12 @@ public class LoginPresenter implements LoginContract.Presenter, LoginContract.In
     public void gmailLogin(Intent data) {
         view.showProgress();
         interactor.gmailLogin(data);
+    }
+
+    @Override
+    public void getUserData(String email) {
+        view.showProgress();
+        interactor.getUserData(email);
     }
 
     @Override

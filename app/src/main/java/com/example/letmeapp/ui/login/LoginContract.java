@@ -10,6 +10,8 @@ public interface LoginContract {
     interface LoginCallback{
         void onSuccess(String email);
         void onFailure(String message);
+        void onUserDataSuccess(User user);
+        void onUserDataEmpty();
     }
 
     interface View extends IProgressView, LoginCallback{
@@ -22,6 +24,7 @@ public interface LoginContract {
         void login(String email, String password);
         void facebookLogin(AccessToken accessToken);
         void gmailLogin(Intent data);
+        void getUserData(String email);
     }
 
     interface Interactor extends LoginCallback{

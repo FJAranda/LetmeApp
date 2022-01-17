@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Request implements Comparable, Serializable {
+    //FIRESTORE COLLECTION NAMES
+    public static final String LETREQUEST_FIRESTORE = "letrequests";
+    public static final String RETURNREQUEST_FIRESTORE = "returnrequests";
+
     private String item;
     private String applicant;
     private String message;
