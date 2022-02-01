@@ -25,6 +25,7 @@ import com.example.letmeapp.ui.MainActivity;
 import com.example.letmeapp.ui.base.IProgressView;
 import com.example.letmeapp.ui.signup.SignUpActivity;
 
+import com.example.letmeapp.utils.MyUtils;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -168,13 +169,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public void onUserDataSuccess(User user) {
-        SharedPreferences.Editor sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this).edit();
-        sharedPreferences.putString(User.USERNAME_TAG, user.getUsername());
-        sharedPreferences.putString(User.NAME_TAG, user.getName());
-        sharedPreferences.putString(User.EMAIL_TAG, user.getEmail());
-        sharedPreferences.putString(User.IMAGE_TAG, user.getImage());
-        sharedPreferences.putBoolean(User.USER_COMPLETED_PREFERENCE, true);
-        sharedPreferences.apply();
+        MyUtils.setUserData(this, user);
         showHome();
     }
 

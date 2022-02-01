@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        //TODO: SOLUCIONA ERROR CON LOGOUT Y LOGIN CONSECUTIVOS DE FACEBOOK Y FIREBASE
+        //TODO: SOLUCIONAR ERROR CON LOGOUT Y LOGIN CONSECUTIVOS DE FACEBOOK Y FIREBASE
         //finish();
     }
 

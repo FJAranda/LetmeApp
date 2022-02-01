@@ -15,15 +15,14 @@
         android:orientation="vertical"
         >
 
-    <ImageView
-        android:id="@+id/ivUserNavDrawer"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:contentDescription="@string/nav_header_desc"
-        android:scaleType="centerCrop"
-        android:clickable="true"
-        android:background="@drawable/letmeapp"
-        app:srcCompat="@drawable/shape_round_image" />
+        <ImageView
+            android:id="@+id/ivUserNavDrawer"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:clickable="true"
+            android:contentDescription="@string/nav_header_desc"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/shape_round_image" />
 
         <TextView
             android:id="@+id/tvTitleNavDrawer"

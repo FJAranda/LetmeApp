@@ -84,7 +84,11 @@
         android:id="@+id/profileFragment"
         android:name="com.example.letmeapp.ui.user.ProfileFragment"
         android:label="@string/strProfile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <argument
+            android:name="user"
+            app:argType="com.example.letmeapp.model.User" />
+    </fragment>
     <dialog
         android:id="@+id/baseDialog"
         android:name="com.example.letmeapp.ui.base.BaseDialog"

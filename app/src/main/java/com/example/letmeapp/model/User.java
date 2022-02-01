@@ -18,6 +18,9 @@ public class User implements Serializable {
     public static final String INTERESTS_FIRESTORE = "interests";
     public static final String IMAGE_FIRESTORE = "image";
     public static final String USERNAME_FIRESTORE = "username";
+    public static final String FRIEND_FIRESTORE = "friend";
+    public static final String FRIENDSHIP_STATUS_FIRESTORE = "status";
+    public static final String STATUS_FRIENDS_FIRESTORE = "friends";
 
 
     String UID;
@@ -110,5 +113,15 @@ public class User implements Serializable {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", image='" + image + '\'' +
+                '}';
     }
 }

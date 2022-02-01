@@ -95,4 +95,6 @@
     <string name="strRecoverPass">Change password</string>
     <string name="strPasswordMailRecoverSent">Mail sended to recover password.</string>
     <string name="strUserEdited">User edited successfully</string>
+    <string name="strUpdatingError">Data isn\'t correct.</string>
+    <string name="strErrorUpdating">Server error. Please try later.</string>
 </resources>
