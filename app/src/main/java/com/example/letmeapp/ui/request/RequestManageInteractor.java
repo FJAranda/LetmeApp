@@ -4,6 +4,7 @@ import com.example.letmeapp.model.Item;
 import com.example.letmeapp.model.Request;
 import com.example.letmeapp.model.repository.ItemRepository;
 import com.example.letmeapp.model.repository.RequestRepository;
+import com.example.letmeapp.model.repository.RequestRepositoryRoom;
 
 public class RequestManageInteractor implements RequestContract.RequestManageCallback{
     RequestContract.RequestManageCallback listener;
@@ -33,10 +34,10 @@ public class RequestManageInteractor implements RequestContract.RequestManageCal
     }
 
     public void add(Request request){
-        RequestRepository.getInstance().add(request, this);
+        RequestRepositoryRoom.getInstance().add(request, this);
     }
 
     public void edit(Request newRequest, Request oldRequest){
-        RequestRepository.getInstance().edit(newRequest, oldRequest, this);
+        RequestRepositoryRoom.getInstance().edit(newRequest, oldRequest, this);
     }
 }

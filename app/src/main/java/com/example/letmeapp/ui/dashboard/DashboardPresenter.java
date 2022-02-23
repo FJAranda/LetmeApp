@@ -38,9 +38,9 @@ public class DashboardPresenter implements DashboardContract.Presenter, Dashboar
     }
 
     @Override
-    public void load() {
+    public void load(String owner) {
         view.showProgress();
-        interactor.load();
+        interactor.load(owner);
     }
 
     @Override

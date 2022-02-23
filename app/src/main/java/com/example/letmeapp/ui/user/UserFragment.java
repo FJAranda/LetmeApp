@@ -85,6 +85,8 @@ public class UserFragment extends Fragment implements UserContract.UserView {
                     Snackbar.make(getView(), getString(R.string.strPasswordMailRecoverSent), BaseTransientBottomBar.LENGTH_SHORT).show();
                 });
             });
+        }else{
+            binding.tilCorreoElectronico.getEditText().setText(user.getEmail());
         }
     }
 

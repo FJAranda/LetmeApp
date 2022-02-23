@@ -7,6 +7,19 @@
             app:summary="@string/account_summary"
             app:title="@string/account_title"></SwitchPreference>
     </PreferenceCategory>
+    <PreferenceCategory app:title="@string/notifications_header">
+        <SwitchPreference android:defaultValue="true"
+            app:key="@string/notification_key"
+            app:summary="@string/summary_notification"
+            app:title="@string/title_notification"></SwitchPreference>
+        <ListPreference
+            app:key="@string/ringtone_key"
+            app:title="@string/title_ringtone"
+            app:summary="@string/summary_ringtone"
+            android:entries="@array/ringtone"
+            android:entryValues="@array/ringtone_values">
+        </ListPreference>
+    </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/design_header">
         <SwitchPreference
@@ -15,7 +28,7 @@
             app:summary="@string/night_mode_summary"
             app:title="@string/night_mode"></SwitchPreference>
         <SwitchPreference
-            android:defaultValue="false"
+            android:defaultValue="true"
             app:key="@string/automatic_mode_key"
             app:summary="@string/automatic_mode_summary"
             app:title="@string/automatic_mode"></SwitchPreference>

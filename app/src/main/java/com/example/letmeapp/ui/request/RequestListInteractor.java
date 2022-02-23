@@ -2,6 +2,7 @@ package com.example.letmeapp.ui.request;
 
 import com.example.letmeapp.model.Request;
 import com.example.letmeapp.model.repository.RequestRepository;
+import com.example.letmeapp.model.repository.RequestRepositoryRoom;
 
 import java.util.List;
 
@@ -27,11 +28,11 @@ public class RequestListInteractor implements RequestContract.RequestListCallbac
         callback.onDeleteSuccess(request);
     }
 
-    public void load(){
-        RequestRepository.getInstance().getList(this);
+    public void load(String applicant){
+        RequestRepositoryRoom.getInstance().getRequestsByApplicant(applicant, this);
     }
 
     public void delete(Request request){
-        RequestRepository.getInstance().delete(request, callback);
+        RequestRepositoryRoom.getInstance().delete(request, callback);
     }
 }

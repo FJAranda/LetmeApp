@@ -1,6 +1,7 @@
 package com.example.letmeapp.ui.splash;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,14 +27,17 @@ public class SplashActivity extends AppCompatActivity {
 
     private void startLogin() {
         User user = MyUtils.getUserData(this);
-        if (user.isCompleted()) {
-            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-            startActivity(intent);
-        }else{
-            startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+        if (PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getBoolean(getString(R.string.account_key), false)) {
+            if (user.isCompleted()) {
+                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
         }
+
+        startActivity(new Intent(SplashActivity.this, LoginActivity.class));
         finish();
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

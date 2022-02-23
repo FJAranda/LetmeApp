@@ -34,7 +34,7 @@ public interface RequestContract {
 
     interface ListPresenter{
         void onDestroy();
-        void load();
+        void load(String applicant);
         void delete(Request request);
         void order();
     }

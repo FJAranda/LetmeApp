@@ -20,7 +20,7 @@ public interface DashboardContract {
 
     interface Presenter{
         void onDestroy();
-        void load();
+        void load(String owner);
         void delete(Item item);
         void order();
     }

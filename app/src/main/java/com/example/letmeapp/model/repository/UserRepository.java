@@ -83,6 +83,11 @@ public class UserRepository implements UserContract.Repository {
         });
     }
 
+    public boolean areFriends(User user, User friend){
+        //TODO: COMPROBAR AMISTAD EN FIRESTORE, PARA LA TAREA 8, SIMULAREMOS QUE TODOS SON AMIGOS SIEMPRE
+        return true;
+    }
+
     @Override
     public void deleteFriend(User user, UserContract.UserListCallback callback) {
 

@@ -23,6 +23,7 @@ import com.example.letmeapp.R;
 import com.example.letmeapp.databinding.FragmentRequestListBinding;
 import com.example.letmeapp.model.Request;
 import com.example.letmeapp.ui.base.BaseDialog;
+import com.example.letmeapp.utils.MyUtils;
 
 import java.util.List;
 
@@ -76,7 +77,7 @@ public class RequestListFragment extends Fragment implements RequestListAdapter.
     @Override
     public void onStart() {
         super.onStart();
-        presenter.load();
+        presenter.load(MyUtils.getUserData(getContext()).getEmail());
         Log.d("LIST FRAGMENT", "on start");
     }
 

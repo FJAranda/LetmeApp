@@ -1,16 +1,16 @@
 package com.example.letmeapp.ui.user;
 
+import com.example.letmeapp.model.Item;
 import com.example.letmeapp.model.User;
 import com.example.letmeapp.ui.base.IProgressView;
+import com.example.letmeapp.ui.dashboard.DashboardContract;
 
 import java.util.List;
 
 public interface UserContract {
     interface ProfileCallback{
-        void onAddSuccess(String message);
-        void onAddFailure(String message);
-        void onDeleteSuccess(String message);
-        void onDeleteFailure(String message);
+        void onAddFriendSuccess();
+        void onAddFriendFailure();
     }
 
     interface UserListCallback{
@@ -28,7 +28,7 @@ public interface UserContract {
 
     }
 
-    interface ProfileView extends IProgressView, ProfileCallback{
+    interface ProfileView extends IProgressView, ProfileCallback, DashboardContract.ItemListCallback {
 
     }
 
@@ -43,6 +43,7 @@ public interface UserContract {
 
     interface ProfilePresenter{
         void addFriend(User user);
+        void getItemList(String owner);
     }
 
     interface ListPresenter{

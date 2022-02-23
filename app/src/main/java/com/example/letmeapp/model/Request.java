@@ -1,21 +1,52 @@
 package com.example.letmeapp.model;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
 import java.util.Date;
 
+@Entity
 public class Request implements Comparable, Serializable {
+    public static final String TAG = "request";
     //FIRESTORE COLLECTION NAMES
     public static final String LETREQUEST_FIRESTORE = "letrequests";
     public static final String RETURNREQUEST_FIRESTORE = "returnrequests";
 
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @NonNull
     private String item;
+    @NonNull
     private String applicant;
     private String message;
+    @NonNull
     private Date startDate;
     private Date endDate;
+    @NonNull
     private String status;
 
+    @Ignore
     public Request(String item, String applicant, String message, Date startDate, Date endDate, String status) {
+        this.item = item;
+        this.applicant = applicant;
+        this.message = message;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.status = status;
+    }
+
+    public Request(int id, @NonNull String item, @NonNull String applicant, String message, @NonNull Date startDate, Date endDate, @NonNull String status) {
+        this.id = id;
         this.item = item;
         this.applicant = applicant;
         this.message = message;

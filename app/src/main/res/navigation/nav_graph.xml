@@ -88,6 +88,9 @@
         <argument
             android:name="user"
             app:argType="com.example.letmeapp.model.User" />
+        <action
+            android:id="@+id/action_profileFragment_to_objectFragment"
+            app:destination="@id/objectFragment" />
     </fragment>
     <dialog
         android:id="@+id/baseDialog"

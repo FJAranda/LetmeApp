@@ -23,6 +23,7 @@ import com.example.letmeapp.R;
 import com.example.letmeapp.databinding.FragmentDashboardBinding;
 import com.example.letmeapp.model.Item;
 import com.example.letmeapp.ui.base.BaseDialog;
+import com.example.letmeapp.utils.MyUtils;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -89,7 +90,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     @Override
     public void onStart() {
         super.onStart();
-        presenter.load();
+        presenter.load(MyUtils.getUserData(getContext()).getEmail());
     }
 
     @Override

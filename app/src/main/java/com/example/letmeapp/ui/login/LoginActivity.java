@@ -110,10 +110,13 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             startActivityForResult(client.getSignInIntent(), GOOGLE_SIGN_IN);
         });
 
-        //Comprobar si hay datos del usuario en sharedpreferences y en firestore
-        String email = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString(User.EMAIL_TAG, null);
-        if (email != null) {
-            presenter.getUserData(email);
+        //Comprobar autologin
+        if (PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getBoolean(getString(R.string.account_key), true)) {
+            //Comprobar si hay datos del usuario en sharedpreferences y en firestore
+            String email = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString(User.EMAIL_TAG, null);
+            if (email != null) {
+                presenter.getUserData(email);
+            }
         }
     }
 
@@ -133,9 +136,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
     public void showHome() {
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(intent);
-        finish();
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
     }
 
     @Override

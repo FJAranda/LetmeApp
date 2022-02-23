@@ -1,7 +1,7 @@
 package com.example.letmeapp.ui.dashboard;
 
 import com.example.letmeapp.model.Item;
-import com.example.letmeapp.model.repository.ItemRepository;
+import com.example.letmeapp.model.repository.ItemRepositoryRoom;
 
 import java.util.List;
 
@@ -27,11 +27,11 @@ public class DashboardInteractor implements DashboardContract.ItemListCallback{
         listener.onDeleteSuccess(item);
     }
 
-    public void load(){
-        ItemRepository.getInstance().getList(this);
+    public void load(String owner){
+        ItemRepositoryRoom.getInstance().getItemsByOwner(owner,this);
     }
 
     public void delete(Item item){
-        ItemRepository.getInstance().delete(item, this);
+        ItemRepositoryRoom.getInstance().delete(item, this);
     }
 }

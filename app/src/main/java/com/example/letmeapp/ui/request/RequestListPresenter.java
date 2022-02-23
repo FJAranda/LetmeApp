@@ -21,9 +21,9 @@ public class RequestListPresenter implements RequestContract.ListPresenter, Requ
     }
 
     @Override
-    public void load() {
+    public void load(String applicant) {
         view.showProgress();
-        interactor.load();
+        interactor.load(applicant);
     }
 
     @Override

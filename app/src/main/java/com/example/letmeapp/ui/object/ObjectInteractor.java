@@ -2,6 +2,7 @@ package com.example.letmeapp.ui.object;
 
 import com.example.letmeapp.model.Item;
 import com.example.letmeapp.model.repository.ItemRepository;
+import com.example.letmeapp.model.repository.ItemRepositoryRoom;
 
 public class ObjectInteractor implements ObjectContract.ObjectCallback{
     ObjectContract.OnInteractorListener listener;
@@ -31,10 +32,10 @@ public class ObjectInteractor implements ObjectContract.ObjectCallback{
     }
 
     public void add(Item item){
-        ItemRepository.getInstance().add(item, this);
+        ItemRepositoryRoom.getInstance().add(item, this);
     }
 
     public void edit(Item newItem, Item oldItem){
-        ItemRepository.getInstance().edit(newItem, oldItem, this);
+        ItemRepositoryRoom.getInstance().edit(newItem, oldItem, this);
     }
 }
