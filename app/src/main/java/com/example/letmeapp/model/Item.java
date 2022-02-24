@@ -12,6 +12,7 @@ public class Item implements Comparable, Serializable {
     public static final String TAG = "item";
     //FIRESTORE COLLECTION NAMES
     public static final String ITEMS_FIRESTORE = "items";
+    public static final String ITEM_OWNER = "owner";
 
     @PrimaryKey(autoGenerate = true)
     private int id;

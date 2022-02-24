@@ -8,6 +8,10 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -17,6 +21,7 @@ import android.widget.TextView;
 import com.example.letmeapp.R;
 import com.example.letmeapp.databinding.ActivityMainBinding;
 import com.example.letmeapp.model.User;
+import com.example.letmeapp.service.RequestService;
 import com.example.letmeapp.ui.login.LoginActivity;
 import com.example.letmeapp.utils.MyUtils;
 import com.facebook.login.LoginManager;
@@ -29,6 +34,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -52,6 +58,17 @@ public class MainActivity extends AppCompatActivity {
 
         getUserSharedPreferences();
 
+        initJob();
+
+    }
+
+    private void initJob() {
+        long millis = 15 * 60000; //15 minutos
+        ComponentName componentName = new ComponentName(this, RequestService.class);
+        JobInfo.Builder jobInfo = new JobInfo.Builder(1, componentName);
+        jobInfo.setPeriodic(millis);
+        JobScheduler scheduler = (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
+        scheduler.schedule(jobInfo.build());
     }
 
     @Override

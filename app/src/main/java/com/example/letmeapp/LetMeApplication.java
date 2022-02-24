@@ -4,6 +4,7 @@ import android.app.Application;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.IntentFilter;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.Ringtone;
@@ -15,6 +16,7 @@ import android.preference.PreferenceManager;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import com.example.letmeapp.model.database.MyDatabase;
+import com.example.letmeapp.service.RequestReceiver;
 import com.facebook.appevents.AppEventsLogger;
 
 public class LetMeApplication extends Application {
@@ -29,6 +31,13 @@ public class LetMeApplication extends Application {
         AppEventsLogger.activateApp(this);
         MyDatabase.create(this);
         createNotificationChannel();
+        setReceiver();
+    }
+
+    private void setReceiver() {
+        RequestReceiver requestReceiver = new RequestReceiver();
+        IntentFilter intentFilter = new IntentFilter("com.example.letmeapp");
+        registerReceiver(requestReceiver, intentFilter);
     }
 
     private void changeTheme() {

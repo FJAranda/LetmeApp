@@ -32,4 +32,7 @@ public interface RequestDAO {
 
     @Query("SELECT * FROM request WHERE applicant=:applicant")
     List<Request> selectByApplicant(String applicant);
+
+    @Query("SELECT * FROM request WHERE status = 'sended'")
+    List<Request> selectSendedRequests();
 }

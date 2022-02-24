@@ -61,6 +61,17 @@ public class RequestRepositoryRoom implements RequestContract.Repository {
         callback.onSuccess(list);
     }
 
+    public List<Request> getSendedRequest(){
+        try {
+            list = (ArrayList<Request>) MyDatabase.databaseWriteExecutor.submit(() -> requestDAO.selectSendedRequests()).get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
     @Override
     public void delete(Request request, RequestContract.RequestListCallback callback) {
         MyDatabase.databaseWriteExecutor.submit(() -> requestDAO.delete(request));
@@ -77,5 +88,9 @@ public class RequestRepositoryRoom implements RequestContract.Repository {
     public void edit(Request newRequest, Request oldRequest, RequestContract.RequestManageCallback callback) {
         MyDatabase.databaseWriteExecutor.submit(() -> requestDAO.update(newRequest));
         callback.onEditSuccess(newRequest);
+    }
+
+    public void edit(Request newRequest, Request oldRequest) {
+        MyDatabase.databaseWriteExecutor.submit(() -> requestDAO.update(newRequest));
     }
 }

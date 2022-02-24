@@ -83,7 +83,7 @@ public class RequestFragment extends Fragment implements RequestContract.Request
                     binding.tilRequestMessage.getEditText().getText().toString(),
                     Calendar.getInstance().getTime(),
                     Calendar.getInstance().getTime(),
-                    "estado"), oldRequest);
+                    "sended"), oldRequest);
         });
     }
 
@@ -95,7 +95,7 @@ public class RequestFragment extends Fragment implements RequestContract.Request
                     binding.tilRequestMessage.getEditText().getText().toString(),
                     Calendar.getInstance().getTime(),
                     Calendar.getInstance().getTime(),
-                    "estado"));
+                    "sended"));
         });
     }
 

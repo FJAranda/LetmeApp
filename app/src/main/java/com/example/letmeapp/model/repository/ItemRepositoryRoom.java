@@ -50,6 +50,18 @@ public class ItemRepositoryRoom implements DashboardContract.Repository, ObjectC
         callback.onSuccess(list);
     }
 
+    public Item getItemByNombre(String nombre){
+        Item item = null;
+        try {
+            item = MyDatabase.databaseWriteExecutor.submit(() -> itemDAO.findByNombre(nombre)).get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return item;
+    }
+
     @Override
     public void delete(Item item, DashboardContract.ItemListCallback callback) {
         MyDatabase.databaseWriteExecutor.submit(() -> itemDAO.delete(item));

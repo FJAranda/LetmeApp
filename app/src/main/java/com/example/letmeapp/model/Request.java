@@ -14,6 +14,10 @@ public class Request implements Comparable, Serializable {
     //FIRESTORE COLLECTION NAMES
     public static final String LETREQUEST_FIRESTORE = "letrequests";
     public static final String RETURNREQUEST_FIRESTORE = "returnrequests";
+    public static final String REQUEST_STATUS = "status";
+    public static final String REQUEST_STATUS_SENDED = "sended";
+    public static final String REQUEST_STATUS_NOTIFIED = "sended";
+    public static final String REQUEST_ITEM = "item";
 
     @PrimaryKey(autoGenerate = true)
     private int id;
