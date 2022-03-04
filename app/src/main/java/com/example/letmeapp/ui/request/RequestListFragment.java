@@ -111,12 +111,9 @@ public class RequestListFragment extends Fragment implements RequestListAdapter.
         Bundle bundle = new Bundle();
         bundle.putString(BaseDialog.TITLE, "Elimminar Petición");
         bundle.putString(BaseDialog.MESSAGE, "¿Desea eliminar la petición: " + request.getItem() + "?");
-        getActivity().getSupportFragmentManager().setFragmentResultListener(BaseDialog.REQUEST, this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                if (result.getBoolean(BaseDialog.RESULT)){
-                    presenter.delete(request);
-                }
+        getActivity().getSupportFragmentManager().setFragmentResultListener(BaseDialog.REQUEST, this, (requestKey, result) -> {
+            if (result.getBoolean(BaseDialog.RESULT)){
+                presenter.delete(request);
             }
         });
         NavHostFragment.findNavController(this).navigate(R.id.action_nav_requests_to_baseDialog, bundle);

@@ -2,7 +2,6 @@ package com.example.letmeapp.ui.base;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -22,19 +21,11 @@ public class BaseDialog extends DialogFragment {
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle(getArguments().getString(TITLE));
             builder.setMessage(getArguments().getString(MESSAGE));
-            builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dismiss();
-                }
-            });
-            builder.setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Bundle result = new Bundle();
-                    result.putBoolean(RESULT, true);
-                    getActivity().getSupportFragmentManager().setFragmentResult(REQUEST, result);
-                }
+            builder.setNegativeButton("Cancelar", (dialog, which) -> dismiss());
+            builder.setPositiveButton("Eliminar", (dialog, which) -> {
+                Bundle result = new Bundle();
+                result.putBoolean(RESULT, true);
+                getActivity().getSupportFragmentManager().setFragmentResult(REQUEST, result);
             });
             // Create the AlertDialog object and return it
             return builder.create();

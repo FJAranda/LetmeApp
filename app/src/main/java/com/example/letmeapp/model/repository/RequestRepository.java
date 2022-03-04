@@ -2,15 +2,12 @@ package com.example.letmeapp.model.repository;
 
 import android.util.Log;
 
-import com.example.letmeapp.R;
-import com.example.letmeapp.model.Item;
 import com.example.letmeapp.model.Request;
 import com.example.letmeapp.ui.request.RequestContract;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.Date;
 
 public class RequestRepository implements RequestContract.Repository {
     private static RequestRepository repository;

@@ -1,26 +1,17 @@
 package com.example.letmeapp.service;
 
-import android.app.Service;
 import android.app.job.JobParameters;
 import android.app.job.JobService;
 import android.content.Intent;
 import android.util.Log;
 
-import androidx.room.RoomDatabase;
-
 import com.example.letmeapp.LetMeApplication;
 import com.example.letmeapp.model.Item;
 import com.example.letmeapp.model.Request;
-import com.example.letmeapp.model.database.MyDatabase;
-import com.example.letmeapp.model.repository.ItemRepository;
 import com.example.letmeapp.model.repository.ItemRepositoryRoom;
 import com.example.letmeapp.model.repository.RequestRepositoryRoom;
 import com.example.letmeapp.utils.MyUtils;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class RequestService extends JobService {

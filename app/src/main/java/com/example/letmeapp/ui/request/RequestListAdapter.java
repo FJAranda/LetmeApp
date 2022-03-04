@@ -15,7 +15,6 @@ import com.example.letmeapp.model.RequestComparator;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 public class RequestListAdapter extends RecyclerView.Adapter<RequestListAdapter.ViewHolder> {
@@ -30,9 +29,6 @@ public class RequestListAdapter extends RecyclerView.Adapter<RequestListAdapter.
 
     public RequestListAdapter(OnManageRequestListener listener) {
         list = new ArrayList<>();
-        /*list.add(new Request("Item 1", "Jose123","Emprestamelo", new Date(), new Date(), "Pending"));
-        list.add(new Request("Item 2", "Juan12","Emprestamelo a mi mejon", new Date(), new Date(), "Rejected"));
-        list.add(new Request("Item 3", "Javivi","Illo, emprestamelo", new Date(), new Date(), "Accepted"));*/
         this.listener = listener;
     }
 
@@ -95,9 +91,7 @@ public class RequestListAdapter extends RecyclerView.Adapter<RequestListAdapter.
         }
 
         public void bind(Request request, OnManageRequestListener listener){
-            itemView.setOnClickListener(v->{
-                listener.onViewRequest(request);
-            });
+            itemView.setOnClickListener(v-> listener.onViewRequest(request));
             itemView.setOnLongClickListener(v ->{
                 listener.onDeleteRequest(request);
                 return true;

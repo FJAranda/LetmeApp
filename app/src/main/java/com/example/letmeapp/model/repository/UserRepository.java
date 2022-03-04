@@ -3,15 +3,10 @@ package com.example.letmeapp.model.repository;
 import android.util.Log;
 
 import com.example.letmeapp.R;
-import com.example.letmeapp.model.Item;
 import com.example.letmeapp.model.User;
 import com.example.letmeapp.ui.user.UserContract;
-import com.example.letmeapp.utils.MyUtils;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,9 +53,7 @@ public class UserRepository implements UserContract.Repository {
            });
             Log.d("USER LIST SIZE", String.valueOf(list.size()));
             callback.onSuccess(list);
-        }).addOnFailureListener(w -> {
-            callback.onSuccess(null);
-        });
+        }).addOnFailureListener(w -> callback.onSuccess(null));
     }
 
     @Override
@@ -78,9 +71,7 @@ public class UserRepository implements UserContract.Repository {
                     });
                 }
             });
-        }).addOnFailureListener( w ->{
-            callback.onFailure(R.string.strErrorUpdating);
-        });
+        }).addOnFailureListener( w -> callback.onFailure(R.string.strErrorUpdating));
     }
 
     public boolean areFriends(User user, User friend){

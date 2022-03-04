@@ -74,4 +74,18 @@
     <string name="help_header">Ayuda</string>
     <string name="privacy_conditions">Condiciones de privacidad</string>
     <string name="help_point">Sitio de ayuda</string>
+    <string name="strCompleteUser">Completa los datos de usuario para usar la app.</string>
+    <string name="strLoginError">Usuario no registrado en la base de datos.</string>
+    <string name="strRecoverPass">Cambiar contraseña</string>
+    <string name="strPasswordMailRecoverSent">Email para recuperar contraseña enviado</string>
+    <string name="strUserEdited">Usuario editado con exito</string>
+    <string name="strUpdatingError">Lo datos no son correctos</string>
+    <string name="strErrorUpdating">Error del servidor. Inténtalo más tarde.</string>
+    <string name="notifications_header">Notificaciones</string>
+    <string name="summary_notification">Notificaciones activadas para la app</string>
+    <string name="title_notification">Activar notificaciones</string>
+    <string name="title_ringtone">Tono de notificacion</string>
+    <string name="summary_ringtone">Selecciona el tono para las notificaciones</string>
+    <string name="strTipo">Tipo</string>
+    <string name="RequestNotification">Peticion creada! Pulsa para verla.</string>
 </resources>

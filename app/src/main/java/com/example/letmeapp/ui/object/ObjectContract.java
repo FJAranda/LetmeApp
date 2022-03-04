@@ -2,7 +2,6 @@ package com.example.letmeapp.ui.object;
 
 import com.example.letmeapp.model.Item;
 import com.example.letmeapp.ui.base.IProgressView;
-import com.example.letmeapp.ui.dashboard.DashboardContract;
 
 public interface ObjectContract {
     interface ObjectCallback{

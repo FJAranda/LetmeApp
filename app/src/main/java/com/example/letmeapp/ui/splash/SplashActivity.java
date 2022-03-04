@@ -1,21 +1,16 @@
 package com.example.letmeapp.ui.splash;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.PreferenceManager;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.letmeapp.R;
 import com.example.letmeapp.model.User;
 import com.example.letmeapp.ui.MainActivity;
 import com.example.letmeapp.ui.login.LoginActivity;
 import com.example.letmeapp.utils.MyUtils;
-
-import java.util.prefs.Preferences;
 
 public class SplashActivity extends AppCompatActivity {
 

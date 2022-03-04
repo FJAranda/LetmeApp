@@ -8,12 +8,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import androidx.core.app.NotificationCompat;
 import androidx.navigation.NavDeepLinkBuilder;
 
 import com.example.letmeapp.LetMeApplication;
 import com.example.letmeapp.R;
-import com.example.letmeapp.ui.MainActivity;
 
 import java.util.Random;
 

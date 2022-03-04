@@ -59,10 +59,7 @@ public class User implements Serializable {
 
     public boolean isCompleted(){
         if (this.username != null && this.name != null && this.email != null){
-            if (this.username.isEmpty() || this.name.isEmpty() || this.email.isEmpty()) {
-                return false;
-            }
-            return true;
+            return !this.username.isEmpty() && !this.name.isEmpty() && !this.email.isEmpty();
         }
         return false;
     }

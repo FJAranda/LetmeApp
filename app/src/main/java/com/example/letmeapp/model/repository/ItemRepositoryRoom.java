@@ -7,7 +7,6 @@ import com.example.letmeapp.ui.dashboard.DashboardContract;
 import com.example.letmeapp.ui.object.ObjectContract;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class ItemRepositoryRoom implements DashboardContract.Repository, ObjectContract.Repository {

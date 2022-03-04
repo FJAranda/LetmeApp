@@ -98,10 +98,10 @@
     <string name="strUpdatingError">Data isn\'t correct.</string>
     <string name="strErrorUpdating">Server error. Please try later.</string>
     <string name="notifications_header">Notifications</string>
-    <string name="notification_key">notification_key</string>
+    <string name="notification_key" translatable="false">notification_key</string>
     <string name="summary_notification">Notification are activated in the app</string>
     <string name="title_notification">Activate notifications</string>
-    <string name="ringtone_key">ringtone_key</string>
+    <string name="ringtone_key" translatable="false">ringtone_key</string>
     <string name="title_ringtone">Notifications tone</string>
     <string name="summary_ringtone">Select the tone for the app notification</string>
     <string name="strTipo">Type</string>

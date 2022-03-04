@@ -1,7 +1,6 @@
 package com.example.letmeapp.ui.request;
 
 import com.example.letmeapp.model.Request;
-import com.example.letmeapp.model.repository.RequestRepository;
 import com.example.letmeapp.model.repository.RequestRepositoryRoom;
 
 import java.util.List;

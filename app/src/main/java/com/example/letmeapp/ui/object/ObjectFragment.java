@@ -1,12 +1,6 @@
 package com.example.letmeapp.ui.object;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
-
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -14,10 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
+
 import com.example.letmeapp.R;
 import com.example.letmeapp.databinding.FragmentObjectBinding;
 import com.example.letmeapp.model.Item;
-import com.example.letmeapp.ui.dashboard.DashboardFragmentDirections;
 import com.example.letmeapp.utils.MyUtils;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -49,7 +47,7 @@ public class ObjectFragment extends Fragment implements ObjectContract.View{
         //TODO: If object do not belong to me, view mode with request option
         if (ObjectFragmentArgs.fromBundle(getArguments()).getItem() != null){
             oldItem = ObjectFragmentArgs.fromBundle(getArguments()).getItem();
-            if (oldItem.getOwner() != MyUtils.getUserData(getContext()).getEmail()){
+            if (!oldItem.getOwner().equals(MyUtils.getUserData(getContext()).getEmail())){
                 getActivity().setTitle(getString(R.string.strViewItem));
                 binding.tvObject.setText(R.string.strViewItem);
                 setButtonRequestMode();
@@ -74,18 +72,14 @@ public class ObjectFragment extends Fragment implements ObjectContract.View{
     }
 
     private void setButtonAddMode() {
-        binding.btnObjeto.setOnClickListener(v->{
-            presenter.add(getItem());
-        });
+        binding.btnObjeto.setOnClickListener(v-> presenter.add(getItem()));
     }
 
     private void setButtonEditMode() {
         binding.btnObjeto.setText(getString(R.string.strEditItem));
         //Using object name until DB implemented
         binding.tietNombreObjeto.setEnabled(false);
-        binding.btnObjeto.setOnClickListener(v->{
-            presenter.edit(getItem(), oldItem);
-        });
+        binding.btnObjeto.setOnClickListener(v-> presenter.edit(getItem(), oldItem));
     }
 
     private void setView(Item item) {

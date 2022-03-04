@@ -1,7 +1,5 @@
 package com.example.letmeapp.ui.signup;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,7 +8,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.letmeapp.R;
 import com.example.letmeapp.databinding.ActivitySignUpBinding;
@@ -38,13 +37,11 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         binding.tiledtPasswordSignUp.addTextChangedListener(new SignUpTextWatcher(binding.tiledtPasswordSignUp));
         binding.tiledtConfirmPasswordSignUp.addTextChangedListener(new SignUpTextWatcher(binding.tiledtConfirmPasswordSignUp));
 
-        binding.btnNewSignUp.setOnClickListener(v -> {
-            presenter.validate(new User(binding.tiledtUserSignUp.getText().toString(),
-                    binding.tiledtNombreSignUp.getText().toString(),
-                    binding.tiledtMailSignUp.getText().toString(),
-                    binding.tiledtPasswordSignUp.getText().toString(),
-                    ""), binding.tiledtConfirmPasswordSignUp.getText().toString());
-        });
+        binding.btnNewSignUp.setOnClickListener(v -> presenter.validate(new User(binding.tiledtUserSignUp.getText().toString(),
+                binding.tiledtNombreSignUp.getText().toString(),
+                binding.tiledtMailSignUp.getText().toString(),
+                binding.tiledtPasswordSignUp.getText().toString(),
+                ""), binding.tiledtConfirmPasswordSignUp.getText().toString()));
     }
 
     void showMainActivity(){

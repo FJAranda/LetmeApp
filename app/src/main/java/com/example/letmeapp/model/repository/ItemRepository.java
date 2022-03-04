@@ -1,10 +1,8 @@
 package com.example.letmeapp.model.repository;
 
-import com.example.letmeapp.R;
 import com.example.letmeapp.model.Item;
 import com.example.letmeapp.ui.dashboard.DashboardContract;
 import com.example.letmeapp.ui.object.ObjectContract;
-import com.example.letmeapp.ui.object.ObjectInteractor;
 
 import java.util.ArrayList;
 import java.util.Collections;

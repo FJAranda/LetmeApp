@@ -1,6 +1,5 @@
 package com.example.letmeapp.model.repository;
 
-import com.example.letmeapp.model.Item;
 import com.example.letmeapp.model.Request;
 import com.example.letmeapp.model.dao.RequestDAO;
 import com.example.letmeapp.model.database.MyDatabase;

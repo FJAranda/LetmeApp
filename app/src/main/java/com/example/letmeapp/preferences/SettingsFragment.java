@@ -3,16 +3,12 @@ package com.example.letmeapp.preferences;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.preference.CheckBoxPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreference;
 
 import com.example.letmeapp.R;
-import com.facebook.share.Share;
 
 public class SettingsFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
 

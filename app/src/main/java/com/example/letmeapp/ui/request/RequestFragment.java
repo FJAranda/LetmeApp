@@ -75,28 +75,24 @@ public class RequestFragment extends Fragment implements RequestContract.Request
     }
 
     private void setButtonModifyRequestMode() {
-        binding.btnEnviar.setOnClickListener( v ->{
-            presenter.edit(new Request(
-                    oldRequest.getId(),
-                    binding.tvObjectName.getText().toString(),
-                    MyUtils.getUserData(getContext()).getEmail(),
-                    binding.tilRequestMessage.getEditText().getText().toString(),
-                    Calendar.getInstance().getTime(),
-                    Calendar.getInstance().getTime(),
-                    "sended"), oldRequest);
-        });
+        binding.btnEnviar.setOnClickListener( v -> presenter.edit(new Request(
+                oldRequest.getId(),
+                binding.tvObjectName.getText().toString(),
+                MyUtils.getUserData(getContext()).getEmail(),
+                binding.tilRequestMessage.getEditText().getText().toString(),
+                Calendar.getInstance().getTime(),
+                Calendar.getInstance().getTime(),
+                "sended"), oldRequest));
     }
 
     private void setButtonNewRequestMode() {
-        binding.btnEnviar.setOnClickListener(v -> {
-            presenter.add(new Request(
-                    binding.tvObjectName.getText().toString(),
-                    MyUtils.getUserData(getContext()).getEmail(),
-                    binding.tilRequestMessage.getEditText().getText().toString(),
-                    Calendar.getInstance().getTime(),
-                    Calendar.getInstance().getTime(),
-                    "sended"));
-        });
+        binding.btnEnviar.setOnClickListener(v -> presenter.add(new Request(
+                binding.tvObjectName.getText().toString(),
+                MyUtils.getUserData(getContext()).getEmail(),
+                binding.tilRequestMessage.getEditText().getText().toString(),
+                Calendar.getInstance().getTime(),
+                Calendar.getInstance().getTime(),
+                "sended")));
     }
 
     @Override

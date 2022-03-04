@@ -1,10 +1,7 @@
 package com.example.letmeapp.ui.request;
 
-import com.example.letmeapp.model.Item;
 import com.example.letmeapp.model.Request;
 import com.example.letmeapp.ui.base.IProgressView;
-import com.example.letmeapp.ui.dashboard.DashboardContract;
-import com.example.letmeapp.ui.object.ObjectContract;
 
 import java.util.List;
 

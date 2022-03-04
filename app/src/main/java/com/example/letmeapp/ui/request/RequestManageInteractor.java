@@ -1,9 +1,6 @@
 package com.example.letmeapp.ui.request;
 
-import com.example.letmeapp.model.Item;
 import com.example.letmeapp.model.Request;
-import com.example.letmeapp.model.repository.ItemRepository;
-import com.example.letmeapp.model.repository.RequestRepository;
 import com.example.letmeapp.model.repository.RequestRepositoryRoom;
 
 public class RequestManageInteractor implements RequestContract.RequestManageCallback{

@@ -1,7 +1,13 @@
 package com.example.letmeapp.ui.dashboard;
 
-import android.app.AlertDialog;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -10,14 +16,6 @@ import androidx.fragment.app.FragmentResultListener;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 
 import com.example.letmeapp.R;
 import com.example.letmeapp.databinding.FragmentDashboardBinding;
@@ -126,12 +124,9 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         Bundle bundle = new Bundle();
         bundle.putString(BaseDialog.TITLE, getString(R.string.strDeleteItem));
         bundle.putString(BaseDialog.MESSAGE, item.getNombre());
-        getActivity().getSupportFragmentManager().setFragmentResultListener(BaseDialog.REQUEST, this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                if (result.getBoolean(BaseDialog.RESULT)){
-                    presenter.delete(item);
-                }
+        getActivity().getSupportFragmentManager().setFragmentResultListener(BaseDialog.REQUEST, this, (requestKey, result) -> {
+            if (result.getBoolean(BaseDialog.RESULT)){
+                presenter.delete(item);
             }
         });
         NavHostFragment.findNavController(this).navigate(R.id.action_dashboardFragment_to_baseDialog, bundle);
