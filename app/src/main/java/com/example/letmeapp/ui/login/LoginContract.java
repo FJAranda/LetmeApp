@@ -4,7 +4,6 @@ import android.content.Intent;
 
 import com.example.letmeapp.model.User;
 import com.example.letmeapp.ui.base.IProgressView;
-import com.facebook.AccessToken;
 
 public interface LoginContract {
     interface LoginCallback{
@@ -22,7 +21,6 @@ public interface LoginContract {
     interface Presenter{
         void onDestroy();
         void login(String email, String password);
-        void facebookLogin(AccessToken accessToken);
         void gmailLogin(Intent data);
         void getUserData(String email);
     }

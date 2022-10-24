@@ -14,11 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "451920547383-g2ru5a8n9fe7lngdtb4sgq4nn6ts6mvj.apps.googleusercontent.com",
+          "client_id": "451920547383-aot4abg0n55oo3p6g7q1hth22j04k1jl.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.letmeapp",
-            "certificate_hash": "f5d664fa12fb76ab468323dab240b299ab4db401"
+            "certificate_hash": "9f964f475028e988a2fa5f608ca24b15096429d9"
           }
         },
         {

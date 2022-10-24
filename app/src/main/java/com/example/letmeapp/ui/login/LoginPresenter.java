@@ -3,7 +3,6 @@ package com.example.letmeapp.ui.login;
 import android.content.Intent;
 
 import com.example.letmeapp.model.User;
-import com.facebook.AccessToken;
 
 public class LoginPresenter implements LoginContract.Presenter, LoginContract.Interactor{
     LoginContract.View view;
@@ -48,12 +47,6 @@ public class LoginPresenter implements LoginContract.Presenter, LoginContract.In
     public void login(String email, String password) {
         view.showProgress();
         interactor.login(email, password);
-    }
-
-    @Override
-    public void facebookLogin(AccessToken accessToken) {
-        view.showProgress();
-        interactor.facebookLogin(accessToken);
     }
 
     @Override

@@ -24,7 +24,6 @@ import com.example.letmeapp.model.User;
 import com.example.letmeapp.service.RequestService;
 import com.example.letmeapp.ui.login.LoginActivity;
 import com.example.letmeapp.utils.MyUtils;
-import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -73,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        //TODO: SOLUCIONAR ERROR CON LOGOUT Y LOGIN CONSECUTIVOS DE FACEBOOK Y FIREBASE
+        //TODO: SOLUCIONAR ERROR CON LOGOUT Y LOGIN CONSECUTIVOS DE FIREBASE
         finish();
     }
 
@@ -124,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
                     .build();
             GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
             googleSignInClient.signOut();
-            LoginManager.getInstance().logOut();
             PreferenceManager.getDefaultSharedPreferences(this).edit().clear().apply();
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);

@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import com.example.letmeapp.model.database.MyDatabase;
 import com.example.letmeapp.service.RequestReceiver;
-import com.facebook.appevents.AppEventsLogger;
 
 public class LetMeApplication extends Application {
     private static Context context;
@@ -22,7 +21,6 @@ public class LetMeApplication extends Application {
         super.onCreate();
         context = this;
         changeTheme();
-        AppEventsLogger.activateApp(this);
         MyDatabase.create(this);
         createNotificationChannel();
         setReceiver();

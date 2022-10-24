@@ -19,12 +19,6 @@ import com.example.letmeapp.model.User;
 import com.example.letmeapp.ui.MainActivity;
 import com.example.letmeapp.ui.signup.SignUpActivity;
 import com.example.letmeapp.utils.MyUtils;
-import com.facebook.AccessToken;
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.login.LoginManager;
-import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -37,7 +31,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     LoginContract.Presenter presenter;
 
     private final int GOOGLE_SIGN_IN = 111111;
-    private CallbackManager callbackManager = CallbackManager.Factory.create();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,28 +48,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         binding.btnSignUp.setOnClickListener(v -> showSignUp());
 
         binding.btnSignIn.setOnClickListener(v -> presenter.login(binding.tiledtUserLogin.getText().toString(), binding.tiledtPasswordLogin.getText().toString()));
-
-        binding.ibSignInFacebook.setOnClickListener( v-> {
-            LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("email"));
-            LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-                @Override
-                public void onSuccess(LoginResult loginResult) {
-                    if (loginResult != null){
-                        AccessToken accessToken = loginResult.getAccessToken();
-                        presenter.facebookLogin(accessToken);
-                    }
-                }
-                @Override
-                public void onCancel() {
-
-                }
-
-                @Override
-                public void onError(@NonNull FacebookException e) {
-
-                }
-            });
-        });
 
         binding.ibSignInGoole.setOnClickListener(v->{
             //LOGIN GOOGLE
@@ -101,7 +72,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == GOOGLE_SIGN_IN){
             presenter.gmailLogin(data);

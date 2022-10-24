@@ -6,7 +6,6 @@ import android.util.Log;
 import com.example.letmeapp.LetMeApplication;
 import com.example.letmeapp.R;
 import com.example.letmeapp.model.User;
-import com.facebook.AccessToken;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
@@ -61,17 +60,6 @@ public class LoginInteractor {
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
-    }
-
-    public void facebookLogin(AccessToken accessToken){
-        AuthCredential authCredential = FacebookAuthProvider.getCredential(accessToken.getToken());
-        FirebaseAuth.getInstance().signInWithCredential(authCredential).addOnCompleteListener(v -> {
-            if (v.isSuccessful()){
-                presenter.onSuccess(v.getResult().getUser().getEmail());
-            }else{
-                presenter.onFailure(v.getException().getCause().toString());
-            }
-        });
     }
 
     public void getUserData(String email){

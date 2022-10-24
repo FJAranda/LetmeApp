@@ -16,7 +16,7 @@ import com.example.letmeapp.model.dao.RequestDAO;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Item.class, Request.class}, version = 2)
+@Database(entities = {Item.class, Request.class}, version = 2, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class MyDatabase extends RoomDatabase {
     public abstract ItemDAO itemDAO();
